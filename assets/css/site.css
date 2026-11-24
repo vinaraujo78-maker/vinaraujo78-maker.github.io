@@ -232,3 +232,10 @@ body:has(.floating) .footer>.wrap{padding-right:4rem}
 .fictional-review figcaption{font-weight:700;color:var(--fictional-color);font-size:.82rem}
 .fictional-review blockquote{margin:.45rem 0}
 @media(max-width:440px){.portfolio-spotlight{flex-direction:column}}
+
+.brand-initials{display:grid;place-items:center;font:700 1rem Sora,sans-serif;color:var(--muted)}
+.brand-card>.fictional-mark{width:64px;height:64px;font-size:.95rem}
+.brand-card-head .fictional-mark{width:52px;height:52px;font-size:.85rem}
+.fictional-mark[data-tone=copper]{--fictional-color:#d99563}
+.fictional-mark[data-tone=plum]{--fictional-color:#d194ee}
+.fictional-mark[data-tone=blue]{--fictional-color:#7fbae7}

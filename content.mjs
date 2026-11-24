@@ -33,8 +33,109 @@ export const posts = [
     ['Defina qualidade antes de comparar','Descreva quais características indicam que um contato é relevante. Onde houver dados suficientes, considere o avanço para a próxima etapa e o tempo até a resposta.'],
     ['Vincule ações a origens','Registre campanha e página de entrada junto aos eventos. Compare os contatos que compartilham o mesmo critério de qualificação, em períodos que tenham tempo suficiente para a avaliação.'],
     ['Dê espaço para a leitura','Use volume, custo e qualidade em conjunto. Se os contatos são poucos, registre a direção observada e reavalie quando houver informação suficiente para decidir.']
-  ]}
+  ]},
+{
+    "slug": "funil-estrategico-crm",
+    "category": "Growth e CRM",
+    "title": "Funil estratégico e CRM: do clique ao cliente",
+    "desc": "Como conectar origem, etapas do pipeline e qualidade dos leads para orientar a mídia.",
+    "image": "blog-demanda.jpg",
+    "body": [
+      [
+        "Desenhe as etapas antes de configurar o CRM",
+        "Mapeie o caminho da primeira interação até o fechamento. Defina o que precisa acontecer para um contato passar de novo lead para lead qualificado e quando uma negociação deve ser aberta. No HubSpot ou em outro CRM, documente responsáveis e critérios de passagem."
+      ],
+      [
+        "Registre a origem sem perder o histórico",
+        "Padronize UTMs na mídia e guarde a origem no CRM quando o contato entrar. Separe os campos de aquisição dos campos operacionais: o estágio pode mudar várias vezes, enquanto o canal de origem ajuda a entender como o lead chegou."
+      ],
+      [
+        "Compare volume com avanço no funil",
+        "Calcule a taxa de qualificação e o custo por oportunidade por canal. Exemplo simulado: 100 leads e 20 oportunidades a R$ 2.000 significam 20% de avanço e R$ 100 por oportunidade. Use uma janela que dê tempo para as etapas acontecerem."
+      ],
+      [
+        "Use o CRM para orientar o próximo teste",
+        "Se há muitos contatos e poucas oportunidades, compare os motivos de descarte e o tempo de resposta. Ajuste primeiro o ponto com mais evidência: público, formulário, oferta ou abordagem comercial. Registre a hipótese e a data em que será reavaliada."
+      ]
+    ]
+  },
+  {
+    "slug": "auditoria-gestao-trafego",
+    "category": "Mídia paga",
+    "title": "Auditoria de tráfego pago: o que revisar antes de escalar",
+    "desc": "Um roteiro de análise para revisar mensuração, orçamento e qualidade das conversões.",
+    "image": "blog-meta-ads.jpg",
+    "body": [
+      [
+        "Valide os eventos e o objetivo",
+        "Liste as ações usadas para otimizar a campanha e verifique se elas correspondem ao objetivo do negócio. Faça uma conversão de teste e confira se o evento dispara na etapa correta, com os parâmetros esperados e sem duplicidade."
+      ],
+      [
+        "Leia investimento e resultado na mesma janela",
+        "Compare orçamento, gasto, conversões, CPA e qualidade com períodos equivalentes. Em vendas, confronte o ROAS com descontos, devoluções e margem. Em geração de leads, olhe o avanço no CRM antes de concluir que o menor CPL é o melhor resultado."
+      ],
+      [
+        "Encontre o ponto que limita a campanha",
+        "Segmente a leitura por canal, criativo e página. Uma taxa de clique baixa aponta para perguntas diferentes de uma taxa de conversão baixa depois do clique. Registre o que mudou na conta para evitar atribuir a variação ao fator errado."
+      ],
+      [
+        "Feche com plano de ação",
+        "Defina responsável, hipótese, mudança e indicador. Combine a próxima data de revisão e documente o que será mantido se o teste não tiver volume suficiente para uma decisão."
+      ]
+    ]
+  },
+  {
+    "slug": "rotina-head-operacional",
+    "category": "Operações",
+    "title": "Como estruturar a rotina de um Head Operacional",
+    "desc": "Priorização, capacidade, qualidade de entrega e comunicação com clientes em um mesmo fluxo.",
+    "image": "blog-experiencia-web.jpg",
+    "body": [
+      [
+        "Dê uma porta de entrada às demandas",
+        "Use um formulário ou uma lista única no ClickUp. Cada demanda precisa descrever objetivo, responsável, prazo, contexto e critério de aceite. Antes de assumir o prazo, confira dependências e disponibilidade do time."
+      ],
+      [
+        "Separe calendário, documentação e execução",
+        "Use o Google Agenda para reuniões e marcos, o Google Workspace para documentos e decisões, e o ClickUp para tarefas e aprovações. Registre o próximo responsável quando uma entrega passa de uma pessoa para outra."
+      ],
+      [
+        "Acompanhe qualidade e capacidade",
+        "Revise o trabalho em andamento, tarefas bloqueadas e entregas atrasadas. Acompanhe retrabalho e gargalos por etapa. Quando uma área está no limite, negocie prioridades em vez de acumular entregas com o mesmo prazo."
+      ],
+      [
+        "Transforme recorrência em processo",
+        "Documente passos e verificações de uma rotina antes de automatizá-la. Para começar com n8n, experimente uma notificação simples em ambiente de teste e mantenha uma alternativa manual. Ao executar IA localmente, avalie qualidade, consumo de recursos e acesso aos dados antes de usar resultados em produção."
+      ]
+    ]
+  },
+  {
+    "slug": "cardapio-digital-delivery",
+    "category": "Delivery",
+    "title": "Cardápio digital para iFood, 99Food e Keeta",
+    "desc": "Como estruturar produtos, adicionais e disponibilidade para manter o cardápio pronto para operar.",
+    "image": "projeto-negocio-local.jpg",
+    "body": [
+      [
+        "Comece pelo que a cozinha consegue entregar",
+        "Confirme horários, itens disponíveis e capacidade antes de montar as categorias. Separe pratos principais, combos e bebidas de um jeito que faça sentido para quem pede pelo celular."
+      ],
+      [
+        "Padronize produtos e adicionais",
+        "Prepare uma ficha com nome, descrição objetiva, preço, foto, variações e adicionais. Especifique o que acompanha o produto e confira se as escolhas obrigatórias fazem sentido no fluxo do pedido."
+      ],
+      [
+        "Revise cada plataforma",
+        "Cadastre e revise o cardápio no iFood, 99Food e Keeta de acordo com os recursos disponíveis no painel de cada operação. Verifique preço, disponibilidade e a ordem de exibição. Confira a versão que o cliente vê antes de divulgar."
+      ],
+      [
+        "Meça e mantenha o cardápio",
+        "Acompanhe pedidos, ticket e disponibilidade por item. Atualize produtos fora de estoque rapidamente e compare alterações com o histórico antes de mudar preço ou destacar um combo."
+      ]
+    ]
+  }
 ];
+
 export const questions = [
   ['Quais são minhas áreas de atuação?','Atuo em sites, landing pages, tráfego pago e estratégia digital, com foco na relação entre aquisição e mensuração.'],
   ['Como organizo um projeto?','Começo pelo diagnóstico, defino a hipótese e a forma de medir, implemento e documento o que os dados mostram.'],
@@ -44,7 +145,7 @@ export const questions = [
 
 export const professionalSkills = [
   {icon:'megaphone', title:'Mídia paga multiplataforma', desc:'Planejamento, gestão e otimização de campanhas em Meta Ads, Google Ads, GPT Ads, iFood Ads e 99Ads.', href:'/servicos/trafego-pago/'},
-  {icon:'layers', title:'Processos e automação com IA', desc:'Criação e melhoria de fluxos internos, com ClickUp, Google Workspace e automações com IA e n8n para reduzir tarefas manuais.'},
+  {icon:'layers', title:'Processos e automação com IA', desc:'Criação e melhoria de fluxos internos, com ClickUp, Google Workspace e automação com IA para reduzir tarefas manuais. Tenho conhecimento básico de n8n.'},
   {icon:'target', title:'Liderança de marketing', desc:'Coordenação de equipes, definição de prioridades, acompanhamento de entregas e participação em contratações.'},
   {icon:'bolt', title:'Relacionamento com clientes', desc:'Onboarding, gestão de contas e Customer Success, com acompanhamento de resultados, alinhamento de expectativas e retenção.'},
   {icon:'bars', title:'Mensuração e conversão', desc:'Implementação de tags com GTM, análise de funis e testes A/B para orientar decisões de mídia e conversão.'},
@@ -67,7 +168,7 @@ export const portfolioWebsites = [
 
 export const portfolioWork = [
   {icon:'megaphone', title:'Mídia paga', desc:'Planejamento, gestão e análise de campanhas de aquisição, com acompanhamento de leads e conversões.'},
-  {icon:'bolt', title:'Automação com IA', desc:'Fluxos de trabalho com n8n e Claude para organizar rotinas e reduzir tarefas manuais.'},
+  {icon:'bolt', title:'Automação com IA', desc:'Aplicações de IA para apoiar rotinas de trabalho, com execução local de ferramentas e noções básicas de n8n.'},
   {icon:'browser', title:'Conteúdo e produção', desc:'Trabalhos em social media, design, cardápios digitais e edição de vídeo para peças de conteúdo e infoprodutos.'}
 ];
 
@@ -251,34 +352,28 @@ export const portfolioBrands = [
   }
 ];
 
-export const documentedCases = [
-  {slug:'resultados-artsolda', brand:'Artsolda', title:'Aquisição industrial para Artsolda', desc:'Um recorte de Google Ads com 434,67 conversões registradas no painel.', stats:[['Conversões','434,67'],['Cliques','1,87 mil'],['CPC médio','R$ 1,30']], insight:'O recorte mostra o volume de ações que o Google Ads registrou e quanto custou, em média, atrair um clique. Para avaliar o valor comercial dessas ações, eu cruzaria as conversões com pedidos de orçamento qualificados no CRM.'},
-  {slug:'resultados-industrias-rc', brand:'Indústrias RC', title:'Presença em busca para Indústrias RC', desc:'O painel registrou 64,1 mil impressões e 2,46 mil cliques, com CPC médio de R$ 0,76.', stats:[['Impressões','64,1 mil'],['Cliques','2,46 mil'],['CPC médio','R$ 0,76'],['Conversões','354,95']], insight:'Neste recorte, o volume de impressões mostra a exposição dos anúncios, enquanto o CPC ajuda a interpretar o custo de trazer visitas. A próxima leitura seria separar consultas de marca e de produto para entender de onde veio a demanda.'},
-  {slug:'resultados-vivazhen', brand:'Vivazhen Veterinária', title:'Demanda local para Vivazhen', desc:'O painel apresenta 540 cliques e 162 conversões em um recorte de anúncios da clínica.', stats:[['Conversões','162'],['Cliques','540'],['Impressões','8,1 mil'],['CPC médio','R$ 3,33']], insight:'Para uma clínica veterinária, o próximo passo é confrontar as ações registradas na plataforma com as chegadas ao WhatsApp e os agendamentos confirmados. Assim dá para avaliar onde o interesse vira atendimento.'}
-];
-
 export const portfolioAccounts = [
   ['Althearin Cristais','Comércio e varejo'],
   ['Soraya Frignani Advogados','Serviços'],
-  ['Lig Lig Restaurante Chinês','Gastronomia',true],
-  ['Farmarcas','Comércio e varejo'],
-  ['Lopes','Mercado imobiliário'],
+  ['Lig Lig Restaurante Chinês','Gastronomia',true,'marca-lig.png'],
+  ['Farmarcas','Comércio e varejo',false,'marca-farmarcas.jpg'],
+  ['Lopes','Mercado imobiliário',false,'marca-lopes.png'],
   ['Old Ways Barbearia','Serviços'],
-  ['LATAM Viagens','Viagens'],
-  ['Onivino','Comércio eletrônico'],
+  ['LATAM Viagens','Viagens',false,'marca-latam.png'],
+  ['Onivino','Comércio eletrônico',false,'marca-onivino.png'],
   ['MF Carnes','Gastronomia'],
-  ['Pastéis LM','Gastronomia',true],
-  ['Ju Folheados','Comércio e varejo'],
+  ['Pastéis LM','Gastronomia',true,'canva-pasteis-lm.png'],
+  ['Ju Folheados','Comércio e varejo',false,'marca-ju.png'],
   ['VSCloset','Comércio e varejo'],
-  ['Empório Coisas de Minas','Gastronomia'],
+  ['Empório Coisas de Minas','Gastronomia',false,'marca-emporio.png'],
   ['Nataluz · ElevenTickets','Eventos'],
   ['Oktoberfest · ElevenTickets','Eventos'],
-  ['Thomas Case','Recrutamento e seleção']
+  ['Thomas Case','Recrutamento e seleção',false,'marca-thomas.png']
 ];
 
 export const fictionalScenarios = [
   {
-    sector:'Restaurantes e delivery', tone:'copper',
+    sector:'Restaurantes e delivery', caseSlug:'midia-gastronomia', tone:'copper',
     brands:['Forno Cedrim','Panela Vilaré','Massa Sete Folhas','Bistrô Sazoni','Brasa Campo Nove'],
     caseTitle:'Do cardápio à operação de mídia',
     result:'200 pedidos simulados · R$ 16 por pedido',
@@ -287,7 +382,7 @@ export const fictionalScenarios = [
     speaker:'Gestora fictícia de Forno Cedrim'
   },
   {
-    sector:'E-commerce e varejo', tone:'plum',
+    sector:'E-commerce e varejo', caseSlug:'midia-ecommerce', tone:'plum',
     brands:['Vitrine Avelumi','Casa Miralto','Trama Lunária','Ateliê Ponto Violeta','Loja Senda Norte'],
     caseTitle:'Aquisição por categoria de produto',
     result:'215 compras simuladas · ROAS de 3,26×',
@@ -296,7 +391,7 @@ export const fictionalScenarios = [
     speaker:'Coordenador fictício de Vitrine Avelumi'
   },
   {
-    sector:'Serviços B2B', tone:'blue',
+    sector:'Serviços B2B', caseSlug:'midia-geracao-de-leads', tone:'blue',
     brands:['Nexorla Operações','Ponte Valeo','Rota Ímpar Consultoria','Oficina Sétima Linha','Rede Córvia Serviços'],
     caseTitle:'Análise de qualidade dos leads',
     result:'250 leads simulados · 82 qualificados',
@@ -337,10 +432,45 @@ export const careerRoles = [
   ],
   [
     "Operações de Marketing e Automação",
-    "Estruturo processos e automatizo tarefas com IA e n8n."
+    "Estruturo processos, uso IA em rotinas de trabalho e tenho conhecimento básico de n8n."
   ],
   [
     "Web Designer · Desenvolvimento de Sites",
     "Desenvolvo sites responsivos, landing pages e cardápios digitais com foco na jornada e na conversão."
+  ]
+];
+
+export const operatingKnowledge = [
+  [
+    "Gestão de tráfego pago",
+    "Planejamento por objetivo e canal, orçamento e ritmo de gasto, públicos, criativos, palavras-chave, testes, CPA, ROAS e análise de resultados."
+  ],
+  [
+    "Mensuração e qualidade do dado",
+    "Plano de eventos, UTMs, GTM, GA4, checagem de conversões e leitura das diferenças entre plataforma, site e CRM."
+  ],
+  [
+    "Funil estratégico e Growth",
+    "Aquisição, ativação, qualificação, fechamento e retenção. Definição de hipóteses, experimentos e métricas para cada etapa."
+  ],
+  [
+    "HubSpot e outros CRMs",
+    "Conhecimento de pipelines, etapas do ciclo de vida, critérios de passagem, origem de leads e acompanhamento da qualidade das oportunidades."
+  ],
+  [
+    "Operação e liderança",
+    "Priorização, capacidade, distribuição de tarefas, prazos, aprovações, documentação, gestão de riscos e acompanhamento de entregas."
+  ],
+  [
+    "Account Management e Customer Success",
+    "Onboarding, alinhamento de metas, gestão de expectativas, acompanhamento de contas e retenção."
+  ],
+  [
+    "ClickUp, Google Workspace e Google Agenda",
+    "Organização de tarefas, documentos, planilhas, reuniões, aprovações e cadência do time."
+  ],
+  [
+    "n8n e IA local",
+    "Conhecimento básico de n8n para fluxos simples e prática de execução de ferramentas e modelos de IA no próprio computador."
   ]
 ];
