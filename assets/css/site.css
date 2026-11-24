@@ -91,3 +91,5 @@ body{background:radial-gradient(ellipse at 78% 10%,#36115d55,transparent 34%),va
 }
 
 .hero-visual:before{z-index:0}.hero-visual img{z-index:2}
+
+.hero-visual img,.portrait-box img,.contact-photo img{display:block!important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}.hero-visual:before,.portrait-box:after{z-index:1}
