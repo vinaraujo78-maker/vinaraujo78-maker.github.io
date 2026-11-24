@@ -16,4 +16,4 @@ O ZIP começa com envio e indexação desativados, e com canais em branco. A med
 
 ## Materiais e pendências
 
-O retrato e as miniaturas reaproveitam os recortes disponíveis no repositório. A imagem original em alta resolução e materiais de projetos reais podem substituir esses arquivos. Os estudos atuais são conceituais. Para divulgar empresas, datas de trajetória ou resultados, use dados verificados e autorizados.
+O retrato da abertura é extraído da referência aprovada. As capas do blog e dos estudos conceituais são ilustrações editoriais. Uma fotografia original em alta resolução e materiais de projetos reais podem substituir esses arquivos. Os estudos atuais são conceituais. Para divulgar empresas, datas de trajetória ou resultados, use dados verificados e autorizados.
