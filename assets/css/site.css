@@ -89,3 +89,5 @@ body{background:radial-gradient(ellipse at 78% 10%,#36115d55,transparent 34%),va
   .contact-photo{height:min(105vw,440px);order:-1}.form{padding:20px}
   .foot{display:grid;grid-template-columns:1fr;gap:16px}.footnav{flex-wrap:wrap}
 }
+
+.hero-visual:before{z-index:0}.hero-visual img{z-index:2}
