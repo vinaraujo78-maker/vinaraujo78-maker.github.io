@@ -7,7 +7,7 @@ const pages = [
   ["Contato", "/contato/"]
 ];
 const path = location.pathname.replace(/index\.html$/, "");
-const asset = name => `/assets/img/${name}?v=photos20261124`;
+const asset = name => `/assets/img/${name}?v=approved2`;
 const link = (url, label, cls = "") =>
   `<a class="${cls} ${path === url ? "active" : ""}" href="${url}">${label}</a>`;
 const button = (url, label, cls = "") =>
