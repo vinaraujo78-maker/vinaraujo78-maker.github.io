@@ -46,6 +46,10 @@ const whatsapp = channelTypes.find(([, , kind]) => kind === 'whatsapp');
 if (whatsapp) {
   const link = channelLink(whatsapp);
   link.className = 'floating';
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  link.setAttribute('aria-label', 'Abrir conversa profissional no WhatsApp (nova aba)');
+  link.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.7a9 9 0 0 1-13.15 8L3 21l1.3-4.66A9 9 0 1 1 21 11.7Z"/><path d="M9.15 7.55c-.28-.66-.93-.58-1.32-.31-.53.37-.83 1.02-.83 1.72 0 2.7 3.42 6.48 6.92 7.2.76.16 1.88-.17 2.28-.85.29-.49.46-1.12.1-1.33l-2.03-1.05c-.32-.16-.54-.03-.73.21l-.63.78c-.18.22-.4.23-.65.11a7 7 0 0 1-2.74-2.54c-.14-.23-.12-.42.04-.6l.53-.62c.18-.22.21-.43.11-.7l-1.05-2.02Z"/></svg>';
   document.body.append(link);
 }
 if (/^\/servicos\/.+/.test(location.pathname)) measure('area_view', { path: location.pathname });
@@ -89,39 +93,24 @@ for (const listing of document.querySelectorAll('[data-listing]')) {
 for (const carousel of document.querySelectorAll('[data-carousel]')) {
   const track = carousel.querySelector('.carousel-track');
   const controls = carousel.querySelector('.carousel-controls');
-  const before = carousel.querySelector('[data-prev]');
-  const after = carousel.querySelector('[data-next]');
-  const indicators = carousel.querySelector('[data-dots]');
-  let positions = [];
-  let index = 0;
-  function scroll(to) {
-    track.scrollTo({ left: positions[to] ?? 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
-  }
+  const buttons = Array.from(controls.querySelectorAll('button'));
+  const maxScroll = () => track.scrollWidth - track.clientWidth;
+
   function update() {
-    index = positions.reduce((best, value, current) =>
-      Math.abs(track.scrollLeft-value) < Math.abs(track.scrollLeft-positions[best]) ? current : best, 0);
-    before.disabled = index === 0;
-    after.disabled = index >= positions.length-1;
-    Array.from(indicators.children).forEach((button, current) => button.setAttribute('aria-current', String(index === current)));
+    const distance = maxScroll();
+    controls.hidden = distance <= 1;
+    const current = track.scrollLeft > distance / 2 ? 1 : 0;
+    buttons.forEach((button, index) => button.setAttribute('aria-current', String(index === current)));
   }
-  function layout() {
-    const limit = track.scrollWidth - track.clientWidth;
-    const first = track.firstElementChild.offsetLeft;
-    positions = Array.from(new Set(Array.from(track.children, card => Math.min(limit, card.offsetLeft - first))));
-    controls.hidden = positions.length < 2;
-    indicators.replaceChildren(...positions.map((_, current) => {
-      const button = document.createElement('button');
-      button.textContent = String(current+1);
-      button.setAttribute('aria-label', 'Ir para posição ' + (current+1));
-      button.addEventListener('click', () => scroll(current));
-      return button;
+
+  buttons.forEach((button, index) => {
+    button.addEventListener('click', () => track.scrollTo({
+      left: index ? maxScroll() : 0,
+      behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
     }));
-    update();
-  }
-  before.addEventListener('click', () => scroll(index-1));
-  after.addEventListener('click', () => scroll(index+1));
+  });
   track.addEventListener('scroll', update, { passive: true });
-  new ResizeObserver(layout).observe(track);
+  new ResizeObserver(update).observe(track);
 }
 
 document.querySelector('[data-share]')?.addEventListener('click', async () => {

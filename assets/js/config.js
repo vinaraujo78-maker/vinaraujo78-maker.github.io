@@ -2,7 +2,7 @@ window.VA_CONFIG = {
   formEnabled: false,
   email: '',
   linkedin: '',
-  whatsapp: '',
+  whatsapp: '5511994448617',
   calendar: '',
   measurement: {
     enabled: false,
