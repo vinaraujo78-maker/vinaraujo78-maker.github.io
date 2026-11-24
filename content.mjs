@@ -70,3 +70,62 @@ export const portfolioWork = [
   {icon:'bolt', title:'Automação com IA', desc:'Fluxos de trabalho com n8n e Claude para organizar rotinas e reduzir tarefas manuais.'},
   {icon:'browser', title:'Conteúdo e produção', desc:'Trabalhos em social media, design, cardápios digitais e edição de vídeo para peças de conteúdo e infoprodutos.'}
 ];
+
+export const mediaCases = [
+  {
+    slug:'midia-geracao-de-leads', category:'Serviços B2B', title:'Geração de leads B2B',
+    desc:'Comparação entre captação em busca e em redes sociais, com foco em leads qualificados.',
+    conversion:'Leads', quality:'Leads qualificados', budget:6000, period:'30 dias',
+    rows:[
+      {channel:'Google Ads · Busca', spend:3500, clicks:1600, conversions:130, qualified:52},
+      {channel:'Meta Ads · Prospecção', spend:2500, clicks:2200, conversions:120, qualified:30}
+    ],
+    challenge:'Como distribuir o orçamento quando uma plataforma gera contatos mais baratos, mas a outra entrega mais oportunidades qualificadas?',
+    method:'Separar as campanhas de busca e prospecção, registrar as origens com UTMs e combinar conversões do site com os critérios de qualificação do CRM.',
+    decision:'Neste cenário, a busca concentra mais leads qualificados e tem menor custo por qualificado. O próximo teste seria mover parte do orçamento para termos de alta intenção e revisar a segmentação de prospecção.'
+  },
+  {
+    slug:'midia-ecommerce', category:'Comércio eletrônico', title:'Aquisição para e-commerce',
+    desc:'Leitura de compras e receita para comparar prospecção e remarketing.',
+    conversion:'Compras', budget:8500, period:'30 dias',
+    rows:[
+      {channel:'Google Ads · Shopping', spend:5000, clicks:3900, conversions:125, revenue:16500},
+      {channel:'Meta Ads · Remarketing', spend:3500, clicks:2700, conversions:90, revenue:11250}
+    ],
+    challenge:'Como avaliar a qualidade do investimento quando os canais participam de etapas diferentes da jornada de compra?',
+    method:'Acompanhar compras e receita atribuídas a cada canal, adotar uma janela de análise comum e usar uma base deduplicada antes de consolidar os números.',
+    decision:'Neste cenário, Shopping traz mais volume e um ROAS ligeiramente maior. Manteria o remarketing em teste e avaliaria margem por categoria e sobreposição antes de aumentar investimento.'
+  },
+  {
+    slug:'midia-gastronomia', category:'Gastronomia', title:'Mídia para delivery',
+    desc:'Comparação do custo por pedido e do retorno sobre mídia em plataformas de delivery.',
+    conversion:'Pedidos', budget:3200, period:'30 dias',
+    rows:[
+      {channel:'iFood Ads', spend:2000, clicks:1600, conversions:125, revenue:6125},
+      {channel:'99Ads', spend:1200, clicks:1100, conversions:75, revenue:3375}
+    ],
+    challenge:'Como priorizar canais e horários para um delivery com capacidade de atendimento variável ao longo da semana?',
+    method:'Acompanhar pedidos, custo e receita em cada plataforma. Cruzar resultados por horário com disponibilidade do cardápio, capacidade de atendimento e ticket médio.',
+    decision:'Os dois canais têm o mesmo custo por pedido neste cenário. Antes de redistribuir orçamento, compararia taxas das plataformas e margem por horário para entender o retorno líquido.'
+  }
+];
+
+export const canvaBrands = [
+  {title:'RE/MAX Brasil', category:'Mercado imobiliário', mark:'canva-remax.png'},
+  {title:'Boteco em Casa', category:'Gastronomia', mark:'canva-boteco-em-casa.png'},
+  {title:'Lavblue', category:'Serviços', mark:'canva-lavblue.png'},
+  {title:'Instituto Chiavenato', category:'Educação', mark:'canva-chiavenato.png'},
+  {title:'Império Bijoux', category:'Comércio e varejo', mark:'canva-imperio-bijoux.png'},
+  {title:'Casa Matarazzo Pizzaria', category:'Gastronomia', mark:'canva-casa-matarazzo.png'},
+  {title:'FH Motos', category:'Automotivo', mark:'canva-fh-motos.png'},
+  {title:'Freedom Sports', category:'Esporte', mark:'canva-freedom-sports.png'},
+  {title:'Biomist', category:'Comércio e varejo', mark:'canva-biomist.png'},
+  {title:'Bubble Box', category:'Serviços', mark:'canva-bubble-box.png'},
+  {title:'ALC Foods', category:'Gastronomia', mark:'canva-alcfoods.png'},
+  {title:'MegaIP Connect', category:'Telecomunicações', mark:'canva-megaip.png'},
+  {title:'Artsolda', category:'Indústria e logística', mark:'canva-artsolda.png'},
+  {title:'Indústrias RC', category:'Indústria e logística', mark:'canva-industrias-rc.png'},
+  {title:'Vivazhen Veterinária', category:'Saúde animal', mark:'canva-vivazhen.png'},
+  {title:'Real Portões Automáticos', category:'Indústria e logística', mark:'canva-real-portoes.png'},
+  {title:'Pastéis LM', category:'Gastronomia', mark:'canva-pasteis-lm.png'}
+];

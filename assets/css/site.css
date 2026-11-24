@@ -189,3 +189,24 @@ body:has(.floating) .footer>.wrap{padding-right:4rem}
 .catalog-domain{color:var(--muted);font-size:.87rem;overflow-wrap:anywhere}
 .catalog-action{font-size:.85rem;margin-top:.65rem}
 .catalog .pagination{margin-top:1rem}
+
+.brand-directory{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:.8rem;margin-top:1.4rem}
+.brand-group{padding:.85rem 1rem;border:1px solid var(--line);border-radius:.75rem;background:var(--panel)}
+.brand-group h3{margin:0 0 .45rem;font-size:.96rem}
+.brand-group ul{margin:0;padding:0;list-style:none;color:var(--muted);font-size:.9rem}
+.brand-group li{display:flex;gap:.6rem;align-items:center;min-height:2.35rem}
+.brand-group li+li{margin-top:.38rem}
+.directory-mark{width:52px;height:44px;object-fit:contain;border-radius:.3rem;flex:none;background:#292731}
+.media-case{display:flex;flex-direction:column;gap:.5rem}
+.media-case small,.simulated{color:#ffad85;font-weight:700}
+.media-case h3,.media-case p{margin:0}
+.media-case span{margin-top:auto;padding-top:.5rem;color:var(--orange);font-weight:700}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:.8rem}
+.metrics div{padding:.8rem;border:1px solid var(--line);border-radius:.65rem;background:var(--panel)}
+.metrics dt{font-size:.85rem;color:var(--muted)}
+.metrics dd{margin:0;font:700 1.2rem/1.5 Sora,sans-serif}
+.campaign-table{overflow-x:auto;margin:1rem 0}
+.campaign-table table{width:100%;border-collapse:collapse;font-size:.87rem}
+.campaign-table caption{text-align:left;color:var(--muted);margin-bottom:.35rem}
+.campaign-table th,.campaign-table td{padding:.65rem;text-align:left;border-bottom:1px solid var(--line)}
+.campaign-table td:not(:first-child){white-space:nowrap}
