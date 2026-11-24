@@ -7,7 +7,7 @@ const pages = [
   ["Contato", "/contato/"]
 ];
 const path = location.pathname.replace(/index\.html$/, "");
-const asset = name => `/assets/img/${name}?v=approved4`;
+const asset = name => `/assets/img/${name}?v=approved5`;
 const link = (url, label, cls = "") =>
   `<a class="${cls} ${path === url ? "active" : ""}" href="${url}">${label}</a>`;
 const button = (url, label, cls = "") =>
@@ -27,11 +27,13 @@ const header = `
   </header>`;
 const footer = `
   <footer class="footer">
-    <div class="wrap foot">
-      <div><b>Vinicius Araújo</b><br>Marketing &amp; Performance Digital · São Paulo, SP</div>
-      <nav class="footnav" aria-label="Navegação do rodapé">${pages.map(([name, url]) => link(url, name)).join("")}</nav>
-      <small>© ${new Date().getFullYear()} Vinicius Araújo</small>
+    <div class="wrap footer-grid">
+      <div class="footer-brand"><a class="brand" href="/" aria-label="Vinicius Araújo, início"><img class="logo" src="${asset("logo-va.svg")}" alt="Vinicius Araújo"></a><p>Marketing &amp; performance digital<br>São Paulo, SP · Atendimento nacional</p></div>
+      <div class="footer-col"><h3>Navegação</h3><a href="/#inicio">Início</a><a href="/#sobre">Sobre</a><a href="/#servicos">Serviços</a><a href="/#portfolio">Portfólio</a></div>
+      <div class="footer-col"><h3>Serviços</h3><a href="/servicos/sites/">Sites e landing pages</a><a href="/servicos/trafego-pago/">Gestão de tráfego pago</a><a href="/servicos/">Estratégia &amp; performance</a></div>
+      <div class="footer-col"><h3>Contato</h3><a href="https://wa.me/5511994448617" target="_blank" rel="noopener">WhatsApp</a><a class="footer-phone" href="https://wa.me/5511994448617" target="_blank" rel="noopener">(11) 99444-8617</a><a href="/contato/">Enviar mensagem</a></div>
     </div>
+    <div class="wrap footer-bottom"><small>© ${new Date().getFullYear()} Vinicius Araújo · Todos os direitos reservados.</small></div>
   </footer>`;
 const eyebrow = (text, orange = true) => `<p class="eyebrow ${orange ? "orange" : ""}">${text}</p>`;
 const pageHero = (label, title, lead) => `
