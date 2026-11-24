@@ -80,9 +80,9 @@ function brandIdentity(title,mark,tone,index) {
 }
 function mediaCard(item) {
   const group = fictionalScenarios.find(group=>group.caseSlug===item.slug);
-  return `<a class="card media-case documented-card" href="${route('portfolio',item)}"><div class="brand-card-head">${brandIdentity(group.brands[0],null,group.tone,0)}<small>Estudo de campanha</small></div><strong class="result-number">${group.result}</strong><h3>${group.brands[0]} · ${item.title}</h3><p>${item.desc}</p><span aria-hidden="true">Ver case →</span></a>`;
+  return `<a class="card media-case documented-card" href="${route('portfolio',item)}"><div class="brand-card-head">${brandIdentity(group.brands[0],null,group.tone,0)}<small>Cenário de campanha · Dados ilustrativos</small></div><strong class="result-number">${group.result}</strong><h3>${group.brands[0]} · ${item.title}</h3><p>${item.desc}</p><span aria-hidden="true">Ver case →</span></a>`;
 }
-const mediaPortfolio = section(heading('Mídia paga','Resultados de <em>campanha.</em>','Cases conceituais para demonstrar minha abordagem de análise, mensuração e otimização. Os indicadores desta seção são ilustrativos.')+`
+const mediaPortfolio = section(heading('Mídia paga','Planejamento e análise de <em>campanhas.</em>','Veja como estruturo campanhas, comparo canais e decido o que otimizar. Os nomes e os indicadores são exemplos ilustrativos.')+`
   <div class="grid three">${mediaCases.map(mediaCard).join('')}</div>`,'about-section');
 const sectorGroups = {
   'Gastronomia':'Gastronomia e alimentação',
