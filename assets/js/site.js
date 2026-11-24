@@ -1,46 +1,184 @@
-(()=>{'use strict';
-const cfg=window.VA_CONFIG||{},analytics=cfg.analytics||{},nav=[['Início','/'],['Sobre','/sobre/'],['Serviços','/servicos/'],['Portfólio','/portfolio/'],['Conteúdos','/conteudos/'],['Contato','/contato/']];
-const route=location.pathname.replace(/index\.html$/,'')||'/';
-const header=document.querySelector('[data-header]');
-if(header){
- header.innerHTML='<div class="head"><a class="brand" href="/" aria-label="Vinicius Araújo, início"><span class="logo">VA</span><span>Vinicius Araújo<small>Marketing &amp; Performance Digital</small></span></a><button class="menu" aria-expanded="false" aria-controls="mainnav">Menu</button><nav class="nav" id="mainnav" aria-label="Navegação principal">'+nav.map(([label,url])=>'<a href="'+url+'" '+((url==='/'?route==='/':route.startsWith(url))?'aria-current="page"':'')+' '+(url==='/contato/'?'class="nav-cta"':'')+'>'+label+'</a>').join('')+'</nav></div>';
- const toggle=header.querySelector('.menu'),menu=header.querySelector('.nav');
- toggle.onclick=()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));menu.classList.toggle('open',open)};
- menu.onclick=e=>{if(e.target.closest('a')){toggle.setAttribute('aria-expanded','false');menu.classList.remove('open')}}
+const config = window.VA_CONFIG;
+const nav = document.querySelector('#site-nav');
+const menu = document.querySelector('.menu');
+
+function setMenu(open) {
+  menu.setAttribute('aria-expanded', String(open));
+  nav.classList.toggle('open', open);
 }
-const crumbNames={'/sobre/':'Sobre mim','/servicos/':'Serviços','/servicos/sites/':'Desenvolvimento de sites','/servicos/trafego-pago/':'Gestão de tráfego pago','/portfolio/':'Portfólio','/portfolio/conceito-negocio-local/':'Conceito para negócio local','/conteudos/':'Conteúdos','/conteudos/site-que-converte/':'Conteúdo','/contato/':'Contato','/privacidade/':'Privacidade','/cookies/':'Cookies'};
-if(crumbNames[route]){const cr=document.createElement('nav');cr.className='crumbs';cr.setAttribute('aria-label','Você está aqui');cr.innerHTML='<a href="/">Início</a><span aria-hidden="true"> / </span><span aria-current="page">'+crumbNames[route]+'</span>';document.querySelector('main')?.prepend(cr)}
-const footer=document.querySelector('[data-footer]');
-if(footer)footer.innerHTML='<div class="footer"><div class="container"><div class="footgrid"><div><a class="brand" href="/"><span class="logo">VA</span><span>Vinicius Araújo<small>Marketing &amp; Performance Digital</small></span></a><p>Estratégia que conecta. Performance que transforma. Sites e tráfego pago com direção, transparência e foco em oportunidades.</p></div><div><h4>Navegação</h4><a href="/sobre/">Sobre mim</a><a href="/servicos/">Serviços</a><a href="/portfolio/">Portfólio</a><a href="/conteudos/">Conteúdos</a></div><div><h4>Serviços</h4><a href="/servicos/sites/">Sites e landing pages</a><a href="/servicos/trafego-pago/">Gestão de tráfego</a><a href="/contato/">Contato</a></div><div><h4>Contato</h4><span>Dados de contato omitidos nesta prévia pública.</span><span>São Paulo, SP</span></div></div><div class="footbottom"><span>© '+new Date().getFullYear()+' Vinicius Araújo.</span><span><a href="/privacidade/">Privacidade</a> · <a href="/cookies/">Cookies</a> · <button data-open-consent>Preferências de cookies</button></span></div></div></div>';
-const banner=document.querySelector('[data-cookie]'),dialog=document.querySelector('[data-dialog]'),key='va_cookie_preferences_v1';
-let prefs=null;try{prefs=JSON.parse(localStorage.getItem(key)||'null')}catch{}
-if(prefs?.expiresAt&&Date.now()>prefs.expiresAt){localStorage.removeItem(key);prefs=null}
-if(banner&&!prefs)banner.hidden=false;
-function updateConsent(){if(window.gtag)gtag('consent','update',{analytics_storage:prefs?.measure?'granted':'denied',ad_storage:prefs?.marketing?'granted':'denied',ad_user_data:prefs?.marketing?'granted':'denied',ad_personalization:prefs?.marketing?'granted':'denied'});if(window.fbq&&prefs?.marketing)fbq('consent','grant');else if(window.fbq)fbq('consent','revoke')}
-function loadTags(){if(!prefs)return;
- if((prefs.measure||prefs.marketing)&&analytics.gtm&&!document.querySelector('[data-gtm]')){
-  window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};
-  gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});updateConsent();window.dataLayer.push({'gtm.start':Date.now(),event:'gtm.js'});
-  const s=document.createElement('script');s.dataset.gtm='1';s.async=true;s.src='https://www.googletagmanager.com/gtm.js?id='+encodeURIComponent(analytics.gtm);document.head.append(s)
- }else if(((prefs.measure&&analytics.ga4)||(prefs.marketing&&analytics.googleAdsConversionId&&!analytics.gtm))&&!document.querySelector('[data-ga4]')){
-  window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};
-  gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});updateConsent();gtag('js',new Date());
-  const id=analytics.ga4||analytics.googleAdsConversionId;const s=document.createElement('script');s.dataset.ga4='1';s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(id);document.head.append(s);s.onload=()=>gtag('config',id)
- }
- if(prefs.measure&&analytics.clarity&&!document.querySelector('[data-clarity]')){const s=document.createElement('script');s.dataset.clarity='1';s.async=true;s.src='https://www.clarity.ms/tag/'+encodeURIComponent(analytics.clarity);document.head.append(s)}
- if(prefs.marketing&&analytics.metaPixel&&!window.fbq){(function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)})(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('consent','grant');fbq('init',analytics.metaPixel);fbq('track','PageView')}
+menu.addEventListener('click', () => setMenu(menu.getAttribute('aria-expanded') !== 'true'));
+nav.addEventListener('click', event => {
+  if (event.target.closest('a')) setMenu(false);
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') {
+    setMenu(false);
+    menu.focus();
+  }
+});
+
+function measure(event, details = {}) {
+  if (!config.measurement.enabled || localStorage.getItem('va_measurement_consent') !== 'granted') return;
+  window.dataLayer ??= [];
+  window.dataLayer.push({ event, ...details });
 }
-function savePrefs(value){prefs={...value,updatedAt:new Date().toISOString(),expiresAt:Date.now()+180*24*60*60*1000};localStorage.setItem(key,JSON.stringify(prefs));if(banner)banner.hidden=true;loadTags();updateConsent()}
-if(prefs)loadTags();
-document.addEventListener('click',e=>{const b=e.target.closest('[data-consent],[data-open-consent]');if(!b)return;if(b.hasAttribute('data-open-consent')||b.dataset.consent==='settings'){dialog?.showModal();return}if(b.dataset.consent==='yes')savePrefs({essential:true,measure:true,marketing:true});if(b.dataset.consent==='no')savePrefs({essential:true,measure:false,marketing:false});if(b.dataset.consent==='save'){e.preventDefault();savePrefs({essential:true,measure:!!dialog.querySelector('[data-measure]').checked,marketing:!!dialog.querySelector('[data-marketing]').checked});dialog.close()}});
-function event(name){if(prefs?.measure&&window.gtag)gtag('event',name,{event_category:'engagement'});if(prefs?.marketing&&window.fbq&&name==='whatsapp_click')fbq('track','Contact')}
-document.addEventListener('click',e=>{const el=e.target.closest('[data-track]');if(el)event(el.dataset.track);const cta=e.target.closest('a[href^="/contato/"]');if(cta)event('commercial_cta_click')});
-if(/^\/servicos\/(sites|trafego-pago)\//.test(route))event('service_page_view');
-if(document.body.dataset.confirmed==='true'){event('form_submit_confirmed');if(prefs?.marketing&&analytics.googleAdsConversionId&&analytics.googleAdsConversionLabel&&window.gtag)gtag('event','conversion',{send_to:analytics.googleAdsConversionId+'/'+analytics.googleAdsConversionLabel})}
-const filters=document.querySelectorAll('[data-filter]'),items=document.querySelectorAll('[data-category]');filters.forEach(b=>b.onclick=()=>{filters.forEach(x=>x.classList.toggle('active',x===b));items.forEach(i=>i.hidden=b.dataset.filter!=='all'&&!i.dataset.category.split(' ').includes(b.dataset.filter))});
-const search=document.querySelector('[data-search]'),category=document.querySelector('select[data-category]'),articles=[...document.querySelectorAll('[data-articles] .article')],empty=document.querySelector('[data-empty]');
-function filterArticles(){if(!articles.length)return;let n=0;articles.forEach(a=>{const ok=(!search?.value||a.innerText.toLowerCase().includes(search.value.toLowerCase()))&&(!category||category.value==='all'||a.dataset.cat===category.value);a.hidden=!ok;if(ok)n++});if(empty)empty.hidden=n>0}
-search?.addEventListener('input',filterArticles);category?.addEventListener('change',filterArticles);
-document.querySelector('[data-share]')?.addEventListener('click',async e=>{const out=e.currentTarget.nextElementSibling;try{await navigator.clipboard.writeText(location.href);out.textContent='Link copiado.'}catch{out.textContent='Não foi possível copiar agora.'}});
-const form=document.querySelector('[data-form]');if(form){fetch('/csrf.php',{credentials:'same-origin'}).then(r=>r.ok?r.json():null).then(d=>{if(d?.token)form.querySelector('[name=csrf_token]').value=d.token}).catch(()=>{});form.addEventListener('submit',e=>{if(!cfg.formEnabled){e.preventDefault();form.querySelector('[data-status]').textContent='Envio desabilitado. Configure e teste o e-mail do domínio antes de ativar.'}});form.addEventListener('focusin',()=>event('form_start'),{once:true});const q=new URLSearchParams(location.search).get('servico');if(q){const s=form.querySelector('[name=service]');if(s)s.value=q==='trafego'?'Gestão de tráfego pago':'Desenvolvimento de site'}}
-})();
+
+const channelTypes = [];
+if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(config.email)) channelTypes.push(['E-mail', 'mailto:' + config.email, 'email']);
+if (/^https:\/\/(www\.)?linkedin\.com\/in\/[^\s]+$/i.test(config.linkedin)) channelTypes.push(['LinkedIn', config.linkedin, 'linkedin']);
+if (/^\d{10,15}$/.test(config.whatsapp)) channelTypes.push(['WhatsApp', 'https://wa.me/' + config.whatsapp, 'whatsapp']);
+if (/^https:\/\/[^\s]+$/i.test(config.calendar)) channelTypes.push(['Agendar conversa', config.calendar, 'calendar']);
+function channelLink([label, url, kind]) {
+  const link = document.createElement('a');
+  link.href = url;
+  link.textContent = label;
+  link.addEventListener('click', () => measure('contact_channel_click', { channel: kind }));
+  return link;
+}
+document.querySelectorAll('[data-channels], [data-social]').forEach(container => {
+  const channels = container.matches('[data-social]') ? channelTypes.filter(([, , kind]) => kind === 'linkedin') : channelTypes;
+  for (const channel of channels) {
+    if (container.childElementCount) container.append(' · ');
+    container.append(channelLink(channel));
+  }
+});
+const whatsapp = channelTypes.find(([, , kind]) => kind === 'whatsapp');
+if (whatsapp) {
+  const link = channelLink(whatsapp);
+  link.className = 'floating';
+  document.body.append(link);
+}
+if (/^\/servicos\/.+/.test(location.pathname)) measure('area_view', { path: location.pathname });
+document.querySelectorAll('a.media[href^="/portfolio/"]').forEach(link => {
+  link.addEventListener('click', () => measure('project_click', { path: link.pathname }));
+});
+
+for (const listing of document.querySelectorAll('[data-listing]')) {
+  const cards = Array.from(listing.querySelectorAll('[data-category]'));
+  const search = listing.querySelector('[data-search]');
+  const filter = listing.querySelector('[data-filter]');
+  const pagination = listing.querySelector('[data-pagination]');
+  const pageSize = Number(listing.dataset.pageSize);
+  const normalize = value => value.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '');
+  function render(page = 1) {
+    const query = normalize(search?.value.trim() || '');
+    const matching = cards.filter(card => (!filter.value || card.dataset.category === filter.value) && normalize(card.textContent).includes(query));
+    const visible = new Set(matching.slice((page-1)*pageSize, page*pageSize));
+    cards.forEach(card => { card.hidden = !visible.has(card); });
+    listing.querySelector('[data-empty]').hidden = matching.length > 0;
+    pagination.replaceChildren();
+    const count = Math.ceil(matching.length/pageSize);
+    if (count < 2) return;
+    for (let index=1; index<=count; index++) {
+      const button = document.createElement('button');
+      button.textContent = String(index);
+      button.setAttribute('aria-label', 'Página ' + index);
+      if (index === page) button.setAttribute('aria-current', 'page');
+      button.addEventListener('click', () => {
+        render(index);
+        pagination.children[index-1]?.focus();
+      });
+      pagination.append(button);
+    }
+  }
+  search?.addEventListener('input', () => render());
+  filter.addEventListener('change', () => render());
+  render();
+}
+
+for (const carousel of document.querySelectorAll('[data-carousel]')) {
+  const track = carousel.querySelector('.carousel-track');
+  const controls = carousel.querySelector('.carousel-controls');
+  const before = carousel.querySelector('[data-prev]');
+  const after = carousel.querySelector('[data-next]');
+  const indicators = carousel.querySelector('[data-dots]');
+  let positions = [];
+  let index = 0;
+  function scroll(to) {
+    track.scrollTo({ left: positions[to] ?? 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+  }
+  function update() {
+    index = positions.reduce((best, value, current) =>
+      Math.abs(track.scrollLeft-value) < Math.abs(track.scrollLeft-positions[best]) ? current : best, 0);
+    before.disabled = index === 0;
+    after.disabled = index >= positions.length-1;
+    Array.from(indicators.children).forEach((button, current) => button.setAttribute('aria-current', String(index === current)));
+  }
+  function layout() {
+    const limit = track.scrollWidth - track.clientWidth;
+    const first = track.firstElementChild.offsetLeft;
+    positions = Array.from(new Set(Array.from(track.children, card => Math.min(limit, card.offsetLeft - first))));
+    controls.hidden = positions.length < 2;
+    indicators.replaceChildren(...positions.map((_, current) => {
+      const button = document.createElement('button');
+      button.textContent = String(current+1);
+      button.setAttribute('aria-label', 'Ir para posição ' + (current+1));
+      button.addEventListener('click', () => scroll(current));
+      return button;
+    }));
+    update();
+  }
+  before.addEventListener('click', () => scroll(index-1));
+  after.addEventListener('click', () => scroll(index+1));
+  track.addEventListener('scroll', update, { passive: true });
+  new ResizeObserver(layout).observe(track);
+}
+
+document.querySelector('[data-share]')?.addEventListener('click', async () => {
+  const status = document.querySelector('[data-share-status]');
+  try {
+    if (navigator.share) await navigator.share({ title: document.title, url: location.href });
+    else {
+      await navigator.clipboard.writeText(location.href);
+      status.textContent = ' Link copiado.';
+    }
+  } catch (error) {
+    if (error.name !== 'AbortError') status.textContent = ' Copie o endereço na barra do navegador.';
+  }
+});
+
+const form = document.querySelector('[data-contact]');
+if (form && config.formEnabled) {
+  const status = form.querySelector('[data-status]');
+  const fields = form.querySelector('fieldset');
+  const submit = form.querySelector('button[type=submit]');
+  async function prepare() {
+    try {
+      const response = await fetch(form.action, { cache: 'no-store' });
+      const data = await response.json();
+      if (!response.ok || !data.token) throw new Error();
+      form.elements.token.value = data.token;
+      fields.disabled = false;
+      return true;
+    } catch {
+      status.textContent = 'O formulário está temporariamente indisponível.';
+      return false;
+    }
+  }
+  prepare().then(ready => { if (ready) status.textContent = ''; });
+  form.addEventListener('focusin', () => measure('contact_form_start'), { once: true });
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    submit.disabled = true;
+    status.textContent = 'Enviando…';
+    try {
+      const response = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+      const data = await response.json();
+      status.textContent = data.message || 'Não foi possível enviar a mensagem.';
+      if (response.status === 403) {
+        const ready = await prepare();
+        if (ready) status.textContent = 'A sessão foi renovada. Envie novamente.';
+      }
+      if (response.ok && data.sent === true) {
+        const token = form.elements.token.value;
+        form.reset();
+        form.elements.token.value = token;
+        measure('contact_form_confirmed');
+      }
+    } catch {
+      status.textContent = 'Não foi possível confirmar o envio. Tente novamente.';
+    } finally {
+      submit.disabled = false;
+    }
+  });
+}
