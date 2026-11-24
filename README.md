@@ -4,9 +4,13 @@
 
 Na raiz do repositório, execute `node preview.mjs` (Node.js 18+) e abra http://127.0.0.1:4173/. O conteúdo fica em `content.mjs`, os componentes e metadados em `build.mjs` e os canais em `assets/js/config.js`. Execute `node build.mjs` para gerar os HTML após editar conteúdo ou componentes.
 
+## Publicação no GitHub Pages
+
+A versão pública usa a branch `main`, a raiz do repositório e o arquivo `.nojekyll`. Para regenerá-la, configure `SITE_TARGET=pages` e `SITE_URL=https://vinaraujo78-maker.github.io`, e execute `node build.mjs`. O contato nessa versão usa os canais configurados em `assets/js/config.js`.
+
 ## Instalação na Hostinger
 
-1. Use PHP 8.1+ e HTTPS. A Hostinger documenta suporte a PHP e limites de envio por script no Single em https://www.hostinger.com/br/support/6976044-parametros-e-limites-dos-planos-de-hospedagem-na-hostinger/.
+1. Use o ZIP para Hostinger ou a branch `portfolio-profissional`, com PHP 8.1+ e HTTPS. A Hostinger documenta suporte a PHP e limites de envio por script no Single em https://www.hostinger.com/br/support/6976044-parametros-e-limites-dos-planos-de-hospedagem-na-hostinger/.
 2. Para produção, defina `SITE_URL` com a origem HTTPS do domínio no ambiente de desenvolvimento e execute `node build.mjs`. O build gera canonical, Open Graph e sitemap para esse domínio e habilita indexação.
 3. Extraia o ZIP em uma pasta vazia. Substitua os HTML, sitemap e robots pelos arquivos gerados para o domínio. Envie o conteúdo da pasta à raiz web, incluindo `.htaccess`. Verifique o HTTP 404 de um endereço inexistente.
 4. Configure o endereço destinatário e o remetente do domínio em `contact-config.php` e habilite `formEnabled` em `assets/js/config.js`. Envie uma mensagem de teste pelo HTTPS e confirme a entrega na caixa do destinatário. O indicador de sucesso significa que o servidor aceitou a mensagem.

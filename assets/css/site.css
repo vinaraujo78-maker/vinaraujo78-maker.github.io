@@ -114,6 +114,11 @@ a.card:hover{border-color:var(--violet);box-shadow:0 0 24px #6514d94f}
 .faq p{margin:0;padding:0 1rem 1rem}
 .contact-panel{display:grid;grid-template-columns:.9fr 1.1fr;gap:2rem;padding:clamp(1.25rem,4.5vw,3.4rem);background:radial-gradient(at 95% 0%,#a83e32,transparent 60%),radial-gradient(at 0% 100%,#6514d9,transparent 50%),#24133e;border:1px solid #bd75e5;border-radius:1.4rem}
 .contact-panel>div>p{color:#f5eafa}
+.contact-direct{align-items:center;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr)}
+.contact-direct-links{display:flex;flex-wrap:wrap;align-items:center;gap:.65rem}
+.contact-direct-links a{display:inline-flex;align-items:center;min-height:44px;padding:.55rem 1rem;border:1px solid #e5c4ff;border-radius:999px;background:#161224;color:#fff;font-weight:700}
+.contact-direct-links a:hover{border-color:var(--orange);color:var(--orange)}
+@media(max-width:760px){.contact-panel.contact-direct{grid-template-columns:minmax(0,1fr)}}
 .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem}
 fieldset{border:0;margin:0;padding:0;min-width:0}
 label{display:block;font-size:.87rem;font-weight:600}
@@ -209,12 +214,12 @@ body:has(.floating) .footer>.wrap{padding-right:4rem}
 .catalog-card h3{margin:0}
 .catalog-domain{color:var(--muted);font-size:.87rem;overflow-wrap:anywhere}
 .catalog-action{font-size:.85rem;margin-top:.65rem}
-.catalog .pagination{margin-top:1rem}
+.catalog .pagination{flex-wrap:wrap;margin-top:1rem}
 
 .media-case{display:flex;flex-direction:column;gap:.5rem}
 .media-case small,.simulated{color:#ffad85;font-weight:700}
 .media-case h3,.media-case p{margin:0}
-.media-case span{margin-top:auto;padding-top:.5rem;color:var(--orange);font-weight:700}
+.media-case>span{margin-top:auto;padding-top:.5rem;color:var(--orange);font-weight:700}
 .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:.8rem}
 .metrics div{padding:.8rem;border:1px solid var(--line);border-radius:.65rem;background:var(--panel)}
 .metrics dt{font-size:.85rem;color:var(--muted)}

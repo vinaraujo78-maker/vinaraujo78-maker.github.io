@@ -1,2 +1,3 @@
 User-agent: *
-Disallow: /
+Allow: /
+Sitemap: https://vinaraujo78-maker.github.io/sitemap.xml

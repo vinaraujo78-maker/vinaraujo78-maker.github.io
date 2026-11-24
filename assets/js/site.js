@@ -38,7 +38,7 @@ function channelLink([label, url, kind]) {
 document.querySelectorAll('[data-channels], [data-social]').forEach(container => {
   const channels = container.matches('[data-social]') ? channelTypes.filter(([, , kind]) => kind === 'linkedin') : channelTypes;
   for (const channel of channels) {
-    if (container.childElementCount) container.append(' · ');
+    if (container.childElementCount && !container.matches('.contact-direct-links')) container.append(' · ');
     container.append(channelLink(channel));
   }
 });
