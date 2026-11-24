@@ -188,3 +188,7 @@ html,body{max-width:100%;overflow-x:clip}
  .hero.wrap{width:100%;padding-left:17px;padding-right:17px}
  .hero-visual{border-radius:0}
 }
+/* Ensure the portrait stays above the decorative gradient */
+.hero-visual{isolation:isolate}
+.hero-visual:before{z-index:1!important;pointer-events:none}
+.hero-visual img{z-index:5!important;display:block!important;visibility:visible!important;opacity:1!important}
