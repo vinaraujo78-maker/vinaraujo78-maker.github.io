@@ -7,7 +7,7 @@ const pages = [
   ["Contato", "/contato/"]
 ];
 const path = location.pathname.replace(/index\.html$/, "");
-const asset = name => `/assets/img/${name}?v=approved5`;
+const asset = name => `/assets/img/${name}?v=approved6`;
 const link = (url, label, cls = "") =>
   `<a class="${cls} ${path === url ? "active" : ""}" href="${url}">${label}</a>`;
 const button = (url, label, cls = "") =>
@@ -63,7 +63,7 @@ const icons = {
 };
 const content = {
   "/": `
-    <section class="hero wrap">
+    <section id="inicio" class="hero wrap">
       <div class="hero-copy">
         ${eyebrow("Marketing & performance digital", false)}
         <h1>Estratégia digital<br>para marcas que<br>querem <span class="accent">crescer.</span></h1>
