@@ -60,7 +60,7 @@ const content = {
         <p class="lead">Marketing, tráfego pago, sites e performance para gerar mais visibilidade, oportunidades e resultados reais.</p>
         <div class="actions">${button("/contato/", "Fale comigo")}${button("/servicos/", "Ver serviços", "ghost")}</div>
       </div>
-      <div class="hero-visual"><img src="${asset("retrato_hero_referencia.png")}" alt="Vinicius Araújo, retrato de perfil"></div>
+      <div class="hero-visual"><img style="display:block!important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 38%;z-index:3" src="${asset("retrato_hero_referencia.png")}" alt="Vinicius Araújo, retrato de perfil"></div>
     </section>
     <section class="proof-wrap"><div class="wrap proof">
       <div><strong aria-hidden="true">◫</strong><span><b>Planejamento</b><br>com objetivos claros</span></div>
@@ -82,7 +82,7 @@ const content = {
   "/sobre/": `
     ${pageHero("Sobre mim", "Conheça minha <span class='accent'>trajetória.</span>", "Atuação em marketing digital com foco em performance, aquisição e presença digital.")}
     <section class="section"><div class="wrap about-grid">
-      <div class="portrait-box"><img src="${asset("retrato_sobre_referencia.png")}" alt="Vinicius Araújo lendo" loading="lazy"></div>
+      <div class="portrait-box"><img style="display:block!important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:3" src="${asset("retrato_sobre_referencia.png")}" alt="Vinicius Araújo lendo" loading="lazy"></div>
       <div class="about-copy"><p>Conecto estratégia, dados e execução para construir uma presença digital coerente e apoiar o crescimento de marcas e negócios.</p><p>Meu trabalho passa por mídia paga, desenvolvimento de sites e landing pages e análise de performance, sempre com comunicação clara e objetivos alinhados.</p>
         <div class="mini-grid"><div class="mini"><b>◎</b>Foco em<br>resultado</div><div class="mini"><b>▥</b>Visão<br>estratégica</div><div class="mini"><b>ϟ</b>Execução<br>ágil</div></div>
       </div>
@@ -118,7 +118,7 @@ const content = {
     ${pageHero("Contato", "Fale <span class='accent'>comigo.</span>", "Tem um projeto, dúvida ou quer entender como posso ajudar seu negócio a crescer? Envie uma mensagem.")}
     <section class="section"><div class="wrap contact-grid">
       <form class="form" id="contact-form"><label>Seu nome<input name="name" autocomplete="name" placeholder="Seu nome" required></label><label>Seu e-mail<input name="email" type="email" autocomplete="email" placeholder="Seu e-mail" required></label><label>Assunto<select name="subject" required><option value="">Assunto</option><option>Sites e landing pages</option><option>Gestão de tráfego pago</option><option>Estratégia digital</option><option>Outro assunto</option></select></label><label>Sua mensagem<textarea name="message" placeholder="Sua mensagem" required></textarea></label><button class="btn" type="submit">Enviar mensagem</button><small id="status" aria-live="polite">Formulário demonstrativo: o envio será conectado quando o canal de atendimento for definido.</small></form>
-      <div class="contact-photo"><img src="${asset("retrato_contato_referencia.png")}" alt="Vinicius Araújo com camisa branca" loading="lazy"></div>
+      <div class="contact-photo"><img style="display:block!important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:3" src="${asset("retrato_contato_referencia.png")}" alt="Vinicius Araújo com camisa branca" loading="lazy"></div>
     </div></section>`,
   "/conteudos/site-que-converte/": `
     ${pageHero("Conteúdo · Sites", "Site que converte: 5 elementos essenciais", "Uma boa página deixa claro o que oferece, para quem e qual é o próximo passo.")}
