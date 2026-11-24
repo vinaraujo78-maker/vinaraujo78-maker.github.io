@@ -42,6 +42,21 @@ document.querySelectorAll('[data-channels], [data-social]').forEach(container =>
     container.append(channelLink(channel));
   }
 });
+const footerSocialChannels = channelTypes.filter(([, , kind]) => kind==='linkedin');
+if (/^https:\/\/(www\.)?instagram\.com\/[\w.]+\/?$/i.test(config.instagram)) {
+  footerSocialChannels.push(['Instagram',config.instagram,'instagram']);
+}
+for (const channel of footerSocialChannels) {
+  const slot = document.querySelector(`[data-footer-social="${channel[2]}"]`);
+  if (!slot) continue;
+  const link = channelLink(channel);
+  link.className = slot.className;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  link.setAttribute('aria-label',`${channel[0]} (nova aba)`);
+  link.replaceChildren(...slot.childNodes);
+  slot.replaceWith(link);
+}
 const whatsapp = channelTypes.find(([, , kind]) => kind === 'whatsapp');
 if (whatsapp) {
   const link = channelLink(whatsapp);

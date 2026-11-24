@@ -2,6 +2,7 @@ window.VA_CONFIG = {
   formEnabled: false,
   email: '',
   linkedin: 'https://www.linkedin.com/in/vinicius-araujo-9ba11022a/',
+  instagram: '',
   whatsapp: '5511994448617',
   calendar: '',
   measurement: {

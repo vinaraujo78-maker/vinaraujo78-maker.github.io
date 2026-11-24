@@ -221,11 +221,15 @@ for (const [path,page] of pages) {
   <div class="wrap">
     <div class="footer-main">
       <div class="footer-brand">${logo}<div><strong>Vinicius Araújo</strong><p>Marketing &amp; performance digital</p></div></div>
-      <nav aria-label="Navegação do rodapé">${nav(path)}<span data-social></span></nav>
+      <nav aria-label="Navegação do rodapé">${nav(path)}</nav>
     </div>
     <div class="footer-bottom">
       <small>© 2026 Vinicius Araújo</small>
       <nav aria-label="Informações legais"><a href="/privacidade/">Privacidade</a><a href="/cookies/">Cookies</a></nav>
+      <div class="footer-social" role="group" aria-label="Redes sociais">
+        <span class="social-button" data-footer-social="linkedin" role="img" aria-label="LinkedIn" aria-disabled="true"><span class="social-linkedin" aria-hidden="true"></span></span>
+        <span class="social-button" data-footer-social="instagram" role="img" aria-label="Instagram, link indisponível" aria-disabled="true"><span class="social-instagram" aria-hidden="true"></span></span>
+      </div>
     </div>
   </div>
 </footer></body></html>`);
