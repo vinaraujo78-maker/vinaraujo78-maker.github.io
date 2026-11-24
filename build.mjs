@@ -17,7 +17,7 @@ const section = (body, cls = '', id = '') => `<section ${id ? `id="${id}"` : ''}
 const heading = (tag, title, lead = '') => `${label(tag)}<h2>${title}</h2>${lead ? `<p>${lead}</p>` : ''}`;
 const pageHero = (tag, title, lead) => `<section class="page-hero"><div class="wrap">${label(tag)}<h1>${title}</h1><p>${lead}</p></div></section>`;
 const route = (group, item) => `/${group}/${item.slug}/`;
-const card = (group, item) => `<a class="card media" href="${route(group,item)}" data-category="${item.category}">${img(item.image)}<div><small>${item.type || item.category}</small><h3>${item.title}</h3><p>${item.desc}</p></div></a>`;
+const card = (group, item) => `<a class="card media" href="${route(group,item)}" data-category="${item.category}">${img(item.image)}<div>${item.brand ? `<div class="brand-card-head">${brandIdentity(item.brand)}<small>${item.brand} · ${item.type}</small></div>` : `<small>${item.type || item.category}</small>`}<h3>${item.title}</h3><p>${item.desc}</p></div></a>`;
 const areaCards = () => `<div class="grid four">${areas.map((a,i) => `<a href="${route('servicos',a)}" class="card area ${i===1?'featured':''}">${icons[a.icon]}<h3>${a.title}</h3><p>${a.desc}</p><span aria-hidden="true">→</span></a>`).join('')}</div>`;
 const approach = () => section(`<div class="split"><div>${heading('Metodologia','Do diagnóstico à <em>otimização.</em>')}</div><ol class="grid four steps">${[['Diagnóstico','Entendo o contexto e defino o problema.'],['Estratégia','Priorizo hipóteses e escolho indicadores.'],['Execução','Implemento a solução e verifico a mensuração.'],['Otimização','Analiso os sinais e documento os próximos passos.']].map(([t,d],i)=>`<li class="card"><h3><span>${String(i+1).padStart(2,'0')}</span>${t}</h3><p>${d}</p></li>`).join('')}</ol></div>`, 'lined');
 const contact = () => section(`<div class="contact-panel"><div>${heading('Contato','Conexões <em>profissionais.</em>','Use este espaço para trocar ideias sobre marketing digital, comentar um conteúdo ou conversar sobre trajetória profissional.')}<div data-channels></div></div>
@@ -34,7 +34,7 @@ const about = () => section(`<div class="center">${heading('Sobre mim','Quem é 
 const projectCards = projects.map(p=>card('portfolio',p)).join('');
 const postCards = posts.slice(-3).map(p=>card('conteudos',p)).join('');
 const home = `
-<div class="opening"><section class="hero" id="inicio"><div class="wrap hero-grid"><div class="hero-copy">${label('Especialista em gestão de tráfego e análise de mídia')}<h1><span>Estratégia digital</span> <span>com foco em <em>crescimento.</em></span></h1><p class="hero-lead">Atuo com gestão de tráfego e análise de mídia. Também desenvolvo sites e landing pages para conectar campanhas à experiência de conversão.</p><div class="actions">${button('/portfolio/','Ver projetos')}${button('/sobre/','Sobre mim','ghost')}</div></div><div class="hero-art"><img src="/assets/img/retrato-hero-blazer.jpg" alt="Retrato de Vinicius Araújo" width="1180" height="671" fetchpriority="high"></div></div></section>
+<div class="opening"><section class="hero" id="inicio"><div class="wrap hero-grid"><div class="hero-copy">${label('Especialista em gestão de tráfego e análise de mídia')}<h1><span>Estratégia digital</span> <span>com foco em <em>crescimento.</em></span></h1><p class="hero-lead">Atuo com gestão de tráfego e análise de mídia. Também desenvolvo sites e landing pages para conectar campanhas à experiência de conversão.</p><div class="actions">${button('/portfolio/','Ver projetos')}${button('/sobre/','Sobre mim','ghost')}</div></div><div class="hero-art"><img src="/assets/img/retrato-hero-integrado.png" alt="Retrato de Vinicius Araújo" width="960" height="546" fetchpriority="high"></div></div></section>
 <div class="wrap proof">${[['bars','Planejamento','Objetivos e prioridades'],['target','Mídia paga','Aquisição digital'],['layers','Experiência web','Sites e landing pages'],['bolt','Mensuração','Análise e aprendizado']].map(([i,t,d])=>`<div>${icons[i]}<span><strong>${t}</strong><br>${d}</span></div>`).join('')}</div></div>
 ${section(`<div class="section-head"><div>${heading('Áreas de atuação','Estratégia e performance <em>na prática.</em>')}</div><p>Minha atuação reúne mídia paga, desenvolvimento web e mensuração ao longo da jornada.</p></div>${areaCards()}`, '', 'servicos')}
 ${about()}
@@ -69,14 +69,19 @@ ${approach()}
 add('/servicos/','Áreas de atuação','Conheça as áreas de atuação de Vinicius Araújo em sites, landing pages, mídia paga e estratégia digital.',pageHero('Áreas de atuação','Da aquisição à <em>experiência digital.</em>','Como abordo sites, landing pages, mídia paga e estratégias de mensuração.')+section(areaCards())+approach());
 for(const item of areas) add(route('servicos',item),item.title,item.desc,pageHero('Áreas de atuação',item.title,item.desc)+section(`<div class="narrow"><h2>Minha abordagem</h2>${item.body.map(p=>`<p>${p}</p>`).join('')}<h2>O que acompanho</h2><ul>${item.points.map(p=>`<li>${p}</li>`).join('')}</ul>${button('/portfolio/','Explorar projetos','ghost')}</div>`,'lined'));
 const fictionalClients = fictionalScenarios.flatMap(group=>group.brands.map((title,index)=>({title,category:group.sector,tone:group.tone,index,demo:true})));
-function fictionalMark(title,tone,index=0) {
-  return `<span class="fictional-mark" data-tone="${tone}" data-variant="${index}" aria-hidden="true">${title.split(' ').slice(0,2).map(word=>word[0]).join('')}</span>`;
+function brandIdentity(title,mark,tone,index) {
+  if (mark) return `<img class="directory-mark" src="/assets/img/${mark}" width="64" height="64" loading="lazy" alt="">`;
+  const words = title.match(/[\p{L}\p{N}]+/gu);
+  const glyph = words.length>1 ? words.slice(0,2).map(word=>word[0]).join('') : words[0].slice(0,2);
+  const seed = Array.from(title).reduce((value,char)=>(value*31+char.codePointAt(0))>>>0,0);
+  const color = tone || ['copper','plum','blue','mint','rose','sand'][seed%6];
+  return `<span class="fictional-mark" data-tone="${color}" data-variant="${index ?? seed%5}" aria-hidden="true">${glyph.toUpperCase()}</span>`;
 }
 function mediaCard(item) {
   const group = fictionalScenarios.find(group=>group.caseSlug===item.slug);
-  return `<a class="card media-case documented-card" href="${route('portfolio',item)}"><div class="brand-card-head">${fictionalMark(group.brands[0],group.tone)}<small>Marca fictícia · Resultado simulado</small></div><strong class="result-number">${group.result}</strong><h3>${group.brands[0]} · ${item.title}</h3><p>${item.desc}</p><span aria-hidden="true">Ver case →</span></a>`;
+  return `<a class="card media-case documented-card" href="${route('portfolio',item)}"><div class="brand-card-head">${brandIdentity(group.brands[0],null,group.tone,0)}<small>Estudo de campanha</small></div><strong class="result-number">${group.result}</strong><h3>${group.brands[0]} · ${item.title}</h3><p>${item.desc}</p><span aria-hidden="true">Ver case →</span></a>`;
 }
-const mediaPortfolio = section(heading('Mídia paga','Resultados de <em>campanha.</em>','Estudos simulados com empresas fictícias para demonstrar minha abordagem de análise, mensuração e otimização.')+`
+const mediaPortfolio = section(heading('Mídia paga','Resultados de <em>campanha.</em>','Cases conceituais para demonstrar minha abordagem de análise, mensuração e otimização. Os indicadores desta seção são ilustrativos.')+`
   <div class="grid three">${mediaCases.map(mediaCard).join('')}</div>`,'about-section');
 const sectorGroups = {
   'Gastronomia':'Gastronomia e alimentação',
@@ -96,16 +101,13 @@ const realBrands = [
 ];
 const trafficBrands = [...realBrands,...fictionalClients];
 const brandCards = trafficBrands.map(({title,category,mark,menu,demo,tone,index})=>{
-  const initials = title.split(' ').slice(0,2).map(word=>word[0]).join('');
-  const badge = demo ? fictionalMark(title,tone,index) : mark
-    ? `<img class="directory-mark" src="/assets/img/${mark}" width="64" height="64" loading="lazy" alt="">`
-    : `<span class="directory-mark brand-initials" aria-hidden="true">${initials}</span>`;
+  const badge = brandIdentity(title,mark,tone,index);
   return `<article class="card catalog-card brand-card" data-category="${sectorGroup(category)}">
     ${badge}<h3>${title}</h3><small>${category}</small>
-    ${demo ? '<p class="simulated">Marca fictícia · Demonstração</p>' : menu ? '<p>Cardápios digitais para delivery</p>' : '<p>Marca da carteira</p>'}
+    ${demo ? '<p class="simulated">Estudo conceitual</p>' : menu ? '<p>Cardápios digitais para delivery</p>' : '<p>Marca da carteira</p>'}
   </article>`;
 }).join('');
-const brandDirectory = section(heading('Gestão de tráfego','Carteira e <em>marcas demonstrativas.</em>','Busque o nome ou filtre por nicho. As marcas fictícias estão identificadas em seus próprios cartões.')+`
+const brandDirectory = section(heading('Gestão de tráfego','Carteira e <em>marcas demonstrativas.</em>','Busque o nome ou filtre por nicho. Os cartões incluem marcas da carteira e estudos conceituais.')+`
   <div class="catalog" data-listing data-page-size="8">
     <div class="filters">
       <label>Buscar marca<input type="search" data-search placeholder="Nome da marca"></label>
@@ -134,19 +136,18 @@ for (const item of mediaCases) {
   const csvDir = resolve(out,'.'+path);
   await mkdir(csvDir,{recursive:true});
   await writeFile(resolve(csvDir,'campanhas-simuladas.csv'),'\uFEFF'+csv+'\r\n');
-  add(path,item.title,item.desc,pageHero('Resultado simulado · Empresa fictícia',group.brands[0]+' · '+item.title,item.desc)+section(`
+  add(path,item.title,item.desc,pageHero('Estudo conceitual · Mídia paga',group.brands[0]+' · '+item.title,item.desc)+section(`
     <article class="narrow">
-      <div class="brand-card-head">${fictionalMark(group.brands[0],group.tone)}<strong>${group.brands[0]} · Marca fictícia</strong></div><p class="simulated">Dados simulados para demonstração · ${item.period} · orçamento previsto de ${currency.format(item.budget)}</p>
-      <p>Exercício fictício. As informações desta página não representam resultados de clientes.</p>
+      <div class="brand-card-head">${brandIdentity(group.brands[0],null,group.tone,0)}<strong>${group.brands[0]}</strong></div><p class="simulated">Dados ilustrativos · ${item.period} · orçamento previsto de ${currency.format(item.budget)}</p>
       <h2>Desafio</h2><p>${item.challenge}</p>
       <h2>Plano de mensuração</h2><p>${item.method}</p>
-      <h2>Painel simulado</h2>
+      <h2>Painel ilustrativo</h2>
       <dl class="metrics">${metrics.map(([title,value])=>`<div><dt>${title}</dt><dd>${value}</dd></div>`).join('')}</dl>
-      <div class="campaign-table" tabindex="0" role="region" aria-label="Tabela de resultados simulados">
-        <table><caption>Desempenho simulado por canal</caption><thead><tr>${columns.map(column=>`<th scope="col">${column}</th>`).join('')}</tr></thead>
+      <div class="campaign-table" tabindex="0" role="region" aria-label="Tabela de resultados ilustrativos">
+        <table><caption>Desempenho ilustrativo por canal</caption><thead><tr>${columns.map(column=>`<th scope="col">${column}</th>`).join('')}</tr></thead>
         <tbody>${item.rows.map(row=>`<tr><th scope="row">${row.channel}</th><td>${currency.format(row.spend)}</td><td>${count.format(row.clicks)}</td><td>${count.format(row.conversions)}</td><td>${currency.format(row.spend/row.conversions)}</td><td>${extraFormat.format(row[extraKey])}</td></tr>`).join('')}</tbody></table>
       </div>
-      <a class="button ghost" href="${path}campanhas-simuladas.csv" download>Baixar dados simulados (CSV)</a>
+      <a class="button ghost" href="${path}campanhas-simuladas.csv" download>Baixar dados ilustrativos (CSV)</a>
       <h2>Leitura e próximo teste</h2><p>${item.decision}</p>
       ${button('/portfolio/','Ver todos os projetos','ghost')}
     </article>`,'lined'));
@@ -166,14 +167,14 @@ add('/portfolio/oportunisa/','Oportunisa','Projeto web de Vinicius Araújo para 
   </article>`,'lined'));
 const menuPortfolio = section(heading('Gastronomia','Cardápios digitais para <em>delivery.</em>','Criei os cardápios digitais da maioria dos clientes de delivery apresentados no portfólio. Trabalho com cadastro de produtos, fotos, categorias, adicionais, preços e disponibilidade no iFood, 99Food e Keeta.')+`
   <ul class="sector-list" aria-label="Plataformas de delivery"><li>iFood</li><li>99Food</li><li>Keeta</li></ul>`,'lined about-section');
-const fictionalPortfolio = section(heading('Laboratório de demonstração','Marcas e cenários <em>fictícios.</em>','Os nomes, logos, resultados e depoimentos abaixo são criações demonstrativas. Eles não representam clientes ou relatos reais.')+`
+const fictionalPortfolio = section(heading('Laboratório de demonstração','Marcas e <em>estudos conceituais.</em>','Identidades de marca e cenários de campanha para mostrar como aplico minha metodologia. Os resultados e as falas são ilustrativos.')+`
   <div class="grid three">${fictionalScenarios.map(({sector,tone,brands,caseTitle,result,summary,quote,speaker})=>`
     <article class="card fictional-sector" data-tone="${tone}">
       <h3>${sector}</h3>
-      <ul class="fictional-logos" aria-label="Marcas fictícias">${brands.map((name,index)=>`
-        <li><span class="fictional-mark" data-variant="${index}" aria-hidden="true">${name.split(' ').slice(0,2).map(word=>word[0]).join('')}</span><span>${name}</span></li>`).join('')}</ul>
+      <ul class="fictional-logos" aria-label="Marcas dos estudos conceituais">${brands.map((name,index)=>`
+        <li>${brandIdentity(name,null,tone,index)}<span>${name}</span></li>`).join('')}</ul>
       <h4>${caseTitle}</h4><p class="simulated">${result}</p><p>${summary}</p>
-      <figure class="fictional-review"><figcaption>Depoimento fictício</figcaption><blockquote>“${quote}”</blockquote><small>${speaker}</small></figure>
+      <figure class="fictional-review"><figcaption>Perspectiva do cenário</figcaption><blockquote>“${quote}”</blockquote><div class="brand-card-head">${brandIdentity(brands[0],null,tone,0)}<small>${speaker}</small></div></figure>
     </article>`).join('')}</div>`,'lined about-section');
 const websitePortfolio = section(`
   ${heading('Experiência web','Sites em <em>destaque.</em>','Trabalhos de presença digital reunidos no meu portfólio. Cada cartão abre o endereço do projeto em uma nova aba.')}
@@ -183,7 +184,7 @@ const websitePortfolio = section(`
       <label>Setor<select data-filter aria-label="Setor"><option value="">Todos os setores</option>${[...new Set(portfolioWebsites.map(item=>item.category))].map(category=>`<option>${category}</option>`).join('')}</select></label>
     </div>
     <div class="grid three">
-      ${portfolioWebsites.map(({title,category,url})=>`<a class="card catalog-card" data-category="${category}" href="${url}" target="_blank" rel="noopener noreferrer" aria-label="${title}, abrir site em nova aba"><small>${category}</small><h3>${title}</h3><span class="catalog-domain">${new URL(url).hostname.replace(/^www\./,'')}</span><span class="catalog-action" aria-hidden="true">Visitar site ↗</span></a>`).join('')}
+      ${portfolioWebsites.map(({title,category,url})=>`<a class="card catalog-card" data-category="${category}" href="${url}" target="_blank" rel="noopener noreferrer" aria-label="${title}, abrir site em nova aba"><div class="brand-card-head">${brandIdentity(title,portfolioBrands.find(brand=>brand.title===title)?.mark)}<div><small>${category}</small><h3>${title}</h3></div></div><span class="catalog-domain">${new URL(url).hostname.replace(/^www\./,'')}</span><span class="catalog-action" aria-hidden="true">Visitar site ↗</span></a>`).join('')}
     </div>
     <p data-empty role="status" hidden>Nenhum projeto encontrado.</p>
     <div class="pagination" data-pagination role="group" aria-label="Páginas da vitrine"></div>
@@ -193,7 +194,7 @@ const workPortfolio = section(heading('Experiência aplicada','Mídia, automaç�
 const conceptPortfolio = section(heading('Estudos conceituais','Estratégias <em>em prática.</em>','Exercícios que mostram como estruturo um site institucional ou uma jornada de aquisição.')+`
   <div class="grid two">${projectCards}</div>`,'lined about-section');
 add('/portfolio/','Projetos','Trabalhos selecionados de Vinicius Araújo em sites, mídia paga, automação e conteúdo, com estudos conceituais de estratégia digital.',pageHero('Portfólio','Projetos e <em>trabalhos selecionados.</em>','Uma seleção do meu portfólio, com sites, mídia paga, automação e produção de conteúdo.')+mediaPortfolio+brandDirectory+websitePortfolio+menuPortfolio+workPortfolio+conceptPortfolio+fictionalPortfolio);
-for(const item of projects) add(route('portfolio',item),item.title,item.desc,pageHero(item.type,item.title,item.desc)+section(`<div class="narrow article">${img(item.image)}${item.body.map(([h,p])=>`<h2>${h}</h2><p>${p}</p>`).join('')}${button('/portfolio/','Todos os projetos','ghost')}</div>`,'lined'));
+for(const item of projects) add(route('portfolio',item),item.title,item.desc,pageHero(item.type,item.title,item.desc)+section(`<div class="narrow article"><div class="brand-card-head">${brandIdentity(item.brand)}<strong>${item.brand}</strong></div>${img(item.image)}${item.body.map(([h,p])=>`<h2>${h}</h2><p>${p}</p>`).join('')}${button('/portfolio/','Todos os projetos','ghost')}</div>`,'lined'));
 add('/conteudos/','Blog','Artigos sobre mídia paga, experiências web e mensuração.',pageHero('Blog','Marketing digital <em>na prática.</em>','Artigos sobre como organizar campanhas, estruturar páginas e interpretar indicadores.')+listing('conteudos',posts));
 for(const item of posts) add(route('conteudos',item),item.title,item.desc,pageHero(item.category,item.title,item.desc)+section(`<article class="narrow article"><p class="byline">Por <a href="/sobre/">Vinicius Araújo</a> · ${Math.max(1,Math.ceil(item.body.flat().join(' ').split(/\s+/).length/180))} min de leitura</p>${img(item.image)}<nav aria-label="Sumário"><h2>Neste artigo</h2><ol>${item.body.map(([h],i)=>`<li><a href="#parte-${i+1}">${h}</a></li>`).join('')}</ol></nav>${item.body.map(([h,p],i)=>`<h2 id="parte-${i+1}">${h}</h2><p>${p}</p>`).join('')}<button type="button" class="button ghost" data-share>Compartilhar artigo</button><span role="status" data-share-status></span></article>`,'lined')+section(heading('Blog','Leituras <em>relacionadas.</em>')+`<div class="grid two">${posts.filter(p=>p!==item).slice(-3).map(p=>card('conteudos',p)).join('')}</div>`),item);
 add('/contato/','Contato','Canal para conexões profissionais e mensagens sobre o portfólio de Vinicius Araújo.',pageHero('Contato','Contato <em>profissional.</em>','Um espaço para networking e conversas sobre marketing digital e os conteúdos do portfólio.')+contact());

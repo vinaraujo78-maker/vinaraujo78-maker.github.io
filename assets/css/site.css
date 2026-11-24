@@ -33,7 +33,8 @@ nav a:hover,nav [aria-current=page]{color:var(--orange)}
 .button.ghost{background:#14121c85;color:var(--ink);border-color:#bdadc8}
 .button.ghost:hover{border-color:var(--orange);background:#54244e}
 .menu{display:none}
-.opening{overflow:clip;isolation:isolate;padding-bottom:.75rem;background:radial-gradient(ellipse at 0 53%,#b334395a,transparent 25%),radial-gradient(ellipse at 76% 84%,#4a0c8777,transparent 56%),linear-gradient(#100f1c 70%,transparent)}
+.opening{position:relative;overflow:clip;isolation:isolate;padding-bottom:.75rem}
+.opening::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;mask-image:linear-gradient(#000 80%,transparent);background:radial-gradient(ellipse at 85% 56%,#44147e80,transparent 49%),radial-gradient(ellipse at 100% 71%,#a63c3666,transparent 35%),radial-gradient(ellipse at 4% 50%,#58204048,transparent 34%),linear-gradient(180deg,#100f1b 16%,#100f1b80 78%,transparent)}
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:2rem}
 .hero .hero-grid{grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:clamp(.5rem,2.5vw,2rem)}
 .hero-copy{position:relative;z-index:1;padding:clamp(2.5rem,4.3vw,4.4rem) 0 clamp(2.6rem,4.5vw,4.75rem)}
@@ -46,7 +47,7 @@ nav a:hover,nav [aria-current=page]{color:var(--orange)}
 .actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.6rem}
 .hero-art{align-self:end;min-width:0;width:min(calc(100% + 3rem),780px);padding-top:.85rem}
 .page-hero::before{content:'';position:absolute;z-index:-1;inset:0 -7rem 0 15%;background:linear-gradient(140deg,#480c99,#6f11c7 48%,#ff651f 95%);transform:skewX(-28deg);opacity:.66}
-.hero-art img{width:100%;height:auto;object-fit:contain;mask-image:linear-gradient(to right,transparent,#000 12%,#000 91%,transparent),linear-gradient(to bottom,transparent,#000 3%);mask-composite:intersect}
+.hero-art img{width:100%;height:auto;object-fit:contain;filter:drop-shadow(0 14px 32px #0a071642)}
 .proof{display:grid;grid-template-columns:repeat(4,1fr);padding:1rem .8rem;border:1px solid #795b91;border-radius:1rem;background:linear-gradient(105deg,#231536,#17151f 64%,#342039);position:relative;margin-top:-8px}
 .proof>div{display:flex;align-items:center;justify-content:center;gap:.8rem;padding:.1rem .55rem;font-size:.88rem;color:var(--muted)}
 .proof>div+div{border-left:1px solid var(--line)}
@@ -233,9 +234,18 @@ body:has(.floating) .footer>.wrap{padding-right:4rem}
 .fictional-review blockquote{margin:.45rem 0}
 @media(max-width:440px){.portfolio-spotlight{flex-direction:column}}
 
-.brand-initials{display:grid;place-items:center;font:700 1rem Sora,sans-serif;color:var(--muted)}
 .brand-card>.fictional-mark{width:64px;height:64px;font-size:.95rem}
 .brand-card-head .fictional-mark{width:52px;height:52px;font-size:.85rem}
 .fictional-mark[data-tone=copper]{--fictional-color:#d99563}
 .fictional-mark[data-tone=plum]{--fictional-color:#d194ee}
 .fictional-mark[data-tone=blue]{--fictional-color:#7fbae7}
+.fictional-mark[data-tone=mint]{--fictional-color:#89d3b0}
+.fictional-mark[data-tone=rose]{--fictional-color:#f0a0ad}
+.fictional-mark[data-tone=sand]{--fictional-color:#e8c486}
+.fictional-mark{background:radial-gradient(ellipse at 75% 15%,color-mix(in srgb,var(--fictional-color) 22%,#23212d),#16151d 70%);letter-spacing:.05em}
+.fictional-mark[data-variant="1"]{border-style:solid;box-shadow:inset 0 0 0 3px #16151d}
+.fictional-mark[data-variant="2"]{background:var(--fictional-color);color:#181521}
+.fictional-mark[data-variant="3"]{border-width:1px;box-shadow:inset 0 0 0 1px currentColor}
+.fictional-mark[data-variant="4"]{border-style:double;border-width:3px}
+.brand-card-head + img{margin-top:1rem}
+.fictional-review .brand-card-head .fictional-mark{width:36px;height:36px;font-size:.72rem}

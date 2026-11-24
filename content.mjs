@@ -5,12 +5,12 @@ export const areas = [
   { slug:'estrategia-digital', icon:'layers', title:'Estratégia digital', desc:'Diagnóstico, priorização e mensuração ao longo da jornada.', body:['Mapeio os pontos de contato e os dados já disponíveis para localizar as lacunas que mais afetam uma decisão.','Registro cada hipótese com um indicador e um critério de revisão. Esse histórico ajuda a interpretar mudanças e orientar o próximo ciclo.'], points:['Mapa da jornada','Qualidade dos dados','Prioridade e critérios de revisão'] }
 ];
 export const projects = [
-  {slug:'conceito-negocio-local', category:'Sites', type:'Projeto conceitual', title:'Presença digital para negócio local', desc:'Estrutura de site institucional, hierarquia de conteúdo e caminho de contato.', image:'projeto-negocio-local.jpg', body:[
+  {slug:'conceito-negocio-local', category:'Sites', type:'Projeto conceitual', brand:'Estúdio Vale Cedral', title:'Presença digital para negócio local', desc:'Estrutura de site institucional, hierarquia de conteúdo e caminho de contato.', image:'projeto-negocio-local.jpg', body:[
     ['Desafio','Uma pessoa que chega pelo celular precisa entender rapidamente a área atendida, os horários e as formas de contato. O exercício parte dessa jornada.'],
     ['Decisões de estrutura','Organizei a página em apresentação, informações essenciais e contato. O menu separa as tarefas principais e o CTA aparece após o contexto necessário para a decisão.'],
     ['Como avaliaria','Observaria a frequência de acesso às informações essenciais e a proporção de visitantes que alcançam o caminho de contato. Este exercício não tem dados de produção.']
   ]},
-  {slug:'conceito-aquisicao-digital', category:'Tráfego pago', type:'Projeto conceitual', title:'Estratégia de aquisição digital', desc:'Modelo que conecta campanha, página de destino e mensuração de oportunidades.', image:'projeto-aquisicao.jpg', body:[
+  {slug:'conceito-aquisicao-digital', category:'Tráfego pago', type:'Projeto conceitual', brand:'Ponte Miravale', title:'Estratégia de aquisição digital', desc:'Modelo que conecta campanha, página de destino e mensuração de oportunidades.', image:'projeto-aquisicao.jpg', body:[
     ['Desafio','Projetar uma jornada que permita distinguir volume de visitas, conclusão do formulário e relevância dos contatos.'],
     ['Decisões de campanha','Organizei os anúncios por intenção, com uma mensagem específica por grupo. A página de destino preserva essa mensagem e pede somente os dados necessários para avançar.'],
     ['Mensuração proposta','O plano registra visualização, início, erro e conclusão do formulário. A avaliação final depende da qualidade observada após a conversão. Esta é uma demonstração sem resultados de cliente.']
@@ -376,28 +376,28 @@ export const fictionalScenarios = [
     sector:'Restaurantes e delivery', caseSlug:'midia-gastronomia', tone:'copper',
     brands:['Forno Cedrim','Panela Vilaré','Massa Sete Folhas','Bistrô Sazoni','Brasa Campo Nove'],
     caseTitle:'Do cardápio à operação de mídia',
-    result:'200 pedidos simulados · R$ 16 por pedido',
+    result:'200 pedidos no cenário · R$ 16 por pedido',
     summary:'O exercício combina revisão do cardápio digital, campanhas por horário e comparação de custo por pedido entre canais.',
     quote:'O painel do exercício me mostrou quais horários mereciam um teste antes de ampliar o orçamento.',
-    speaker:'Gestora fictícia de Forno Cedrim'
+    speaker:'Clara Vilar · Gestão do Forno Cedrim'
   },
   {
     sector:'E-commerce e varejo', caseSlug:'midia-ecommerce', tone:'plum',
     brands:['Vitrine Avelumi','Casa Miralto','Trama Lunária','Ateliê Ponto Violeta','Loja Senda Norte'],
     caseTitle:'Aquisição por categoria de produto',
-    result:'215 compras simuladas · ROAS de 3,26×',
+    result:'215 compras no cenário · ROAS de 3,26×',
     summary:'O cenário usa dados simulados de Shopping e remarketing para priorizar categorias conforme margem e receita atribuída.',
     quote:'O exemplo tornou mais fácil discutir quais categorias testar primeiro e por quê.',
-    speaker:'Coordenador fictício de Vitrine Avelumi'
+    speaker:'Mateus Lira · Coordenação de Vitrine Avelumi'
   },
   {
     sector:'Serviços B2B', caseSlug:'midia-geracao-de-leads', tone:'blue',
     brands:['Nexorla Operações','Ponte Valeo','Rota Ímpar Consultoria','Oficina Sétima Linha','Rede Córvia Serviços'],
     caseTitle:'Análise de qualidade dos leads',
-    result:'250 leads simulados · 82 qualificados',
+    result:'250 leads no cenário · 82 qualificados',
     summary:'O exercício conecta a origem da conversão a dados de qualificação do CRM para comparar canais além do custo por cadastro.',
     quote:'A comparação ajudou a visualizar a diferença entre volume de cadastros e oportunidades para o comercial.',
-    speaker:'Gerente fictícia de Nexorla Operações'
+    speaker:'Renata Sá · Operações da Nexorla'
   }
 ];
 
