@@ -1,7 +1,7 @@
 export const areas = [
   { slug:'sites', icon:'monitor', title:'Sites estratégicos', desc:'Arquitetura de conteúdo, navegação e experiência mobile.', body:['Parto das dúvidas que a pessoa traz ao chegar à página. Organizo a navegação e o conteúdo para que ela consiga entender o contexto, encontrar a informação e decidir como seguir.','Depois da implementação, verifico a experiência em telas menores e acompanho os caminhos mais usados.'], points:['Hierarquia e clareza das informações','Desempenho e navegação mobile','Eventos de navegação e contato'] },
   { slug:'landing-pages', icon:'browser', title:'Landing pages', desc:'Páginas de destino alinhadas à mensagem e à intenção da visita.', body:['Mapeio a promessa do anúncio e a expectativa de quem vai clicar. Essas duas informações orientam o texto de abertura, as evidências e o próximo passo.','Avalio a qualidade da interação após o clique e uso os sinais do formulário para priorizar ajustes.'], points:['Continuidade entre anúncio e página','Clareza da ação principal','Inícios e conclusões do formulário'] },
-  { slug:'trafego-pago', icon:'megaphone', title:'Tráfego pago', desc:'Planejamento e análise de campanhas no Meta Ads e Google Ads.', body:['Defino o objetivo e o evento de conversão antes de estruturar campanhas. Agrupo mensagens e públicos para que a leitura dos resultados ajude a responder uma pergunta por vez.','Na análise, relaciono custo e volume aos sinais de qualidade disponíveis depois da conversão.'], points:['Estrutura de campanha e hipóteses','Custo por ação e qualidade','Desempenho por mensagem e público'] },
+  { slug:'trafego-pago', icon:'megaphone', title:'Tráfego pago', desc:'Planejamento, gestão e otimização de mídia paga em diferentes plataformas.', body:['Tenho experiência prática com Meta Ads, Google Ads, GPT Ads, iFood Ads e 99Ads. Escolho os canais conforme o público, o objetivo e o que é possível medir em cada etapa.','Defino o objetivo e o evento de conversão antes de estruturar campanhas. Agrupo mensagens e públicos para que a leitura dos resultados ajude a responder uma pergunta por vez.','Na análise, relaciono custo e volume aos sinais de qualidade disponíveis depois da conversão.'], points:['Estrutura de campanha e hipóteses','Custo por ação e qualidade','Desempenho por mensagem e público'] },
   { slug:'estrategia-digital', icon:'layers', title:'Estratégia digital', desc:'Diagnóstico, priorização e mensuração ao longo da jornada.', body:['Mapeio os pontos de contato e os dados já disponíveis para localizar as lacunas que mais afetam uma decisão.','Registro cada hipótese com um indicador e um critério de revisão. Esse histórico ajuda a interpretar mudanças e orientar o próximo ciclo.'], points:['Mapa da jornada','Qualidade dos dados','Prioridade e critérios de revisão'] }
 ];
 export const projects = [
@@ -40,4 +40,33 @@ export const questions = [
   ['Como organizo um projeto?','Começo pelo diagnóstico, defino a hipótese e a forma de medir, implemento e documento o que os dados mostram.'],
   ['O que são os projetos conceituais?','São demonstrações que explicam decisões de estrutura, mídia e mensuração em cenários ilustrativos.'],
   ['Sobre o que escrevo?','Escrevo sobre campanhas, experiência web e leitura dos dados de marketing.']
+];
+
+export const professionalSkills = [
+  {icon:'megaphone', title:'Mídia paga multiplataforma', desc:'Planejamento, gestão e otimização de campanhas em Meta Ads, Google Ads, GPT Ads, iFood Ads e 99Ads.', href:'/servicos/trafego-pago/'},
+  {icon:'layers', title:'Processos e automação com IA', desc:'Criação e melhoria de fluxos internos, com ClickUp, Google Workspace e automações com IA e n8n para reduzir tarefas manuais.'},
+  {icon:'target', title:'Liderança de marketing', desc:'Coordenação de equipes, definição de prioridades, acompanhamento de entregas e participação em contratações.'},
+  {icon:'bolt', title:'Relacionamento com clientes', desc:'Onboarding, gestão de contas e Customer Success, com acompanhamento de resultados, alinhamento de expectativas e retenção.'},
+  {icon:'bars', title:'Mensuração e conversão', desc:'Implementação de tags com GTM, análise de funis e testes A/B para orientar decisões de mídia e conversão.'},
+  {icon:'monitor', title:'Experiência web', desc:'Criação de sites responsivos, landing pages e cardápios digitais com foco na jornada do usuário.', href:'/servicos/sites/'}
+];
+
+export const portfolioWebsites = [
+  {title:'Mr. Hoppy', category:'Gastronomia', url:'https://mrhoppy.com.br'},
+  {title:'Loja Disko', category:'Comércio eletrônico', url:'https://www.lojadisko.com.br'},
+  {title:'HD Lubrificantes', category:'Indústria e logística', url:'https://hdlubrificantes.com.br'},
+  {title:'Renov Administradora', category:'Serviços', url:'https://renovadm.com'},
+  {title:'Renov Portaria', category:'Serviços', url:'https://renovportaria.com.br/home/'},
+  {title:'Marques Araújo', category:'Serviços', url:'https://marquesaraujo.adv.br'},
+  {title:'BPower Motorsport', category:'Automotivo', url:'https://bpowermotorsport.com.br'},
+  {title:'HD Express', category:'Indústria e logística', url:'https://hdexpress.com.br'},
+  {title:'Patrick Ribeiro', category:'Serviços', url:'https://patrickribeiro.com.br'},
+  {title:'Gráfica Cartex', category:'Indústria e logística', url:'https://graficacartex.com.br'},
+  {title:'Vivazhen Veterinária', category:'Saúde animal', url:'https://vivazhenveterinaria.com.br'}
+];
+
+export const portfolioWork = [
+  {icon:'megaphone', title:'Mídia paga', desc:'Planejamento, gestão e análise de campanhas de aquisição, com acompanhamento de leads e conversões.'},
+  {icon:'bolt', title:'Automação com IA', desc:'Fluxos de trabalho com n8n e Claude para organizar rotinas e reduzir tarefas manuais.'},
+  {icon:'browser', title:'Conteúdo e produção', desc:'Trabalhos em social media, design, cardápios digitais e edição de vídeo para peças de conteúdo e infoprodutos.'}
 ];
