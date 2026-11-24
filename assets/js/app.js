@@ -7,7 +7,7 @@ const pages = [
   ["Contato", "/contato/"]
 ];
 const path = location.pathname.replace(/index\.html$/, "");
-const asset = name => `/assets/img/${name}?v=approved2`;
+const asset = name => `/assets/img/${name}?v=approved3`;
 const link = (url, label, cls = "") =>
   `<a class="${cls} ${path === url ? "active" : ""}" href="${url}">${label}</a>`;
 const button = (url, label, cls = "") =>
@@ -80,12 +80,10 @@ const content = {
       </div>
     </section>`,
   "/sobre/": `
-    ${pageHero("Sobre mim", "Conheça minha <span class='accent'>trajetória.</span>", "Atuação em marketing digital com foco em performance, aquisição e presença digital.")}
-    <section class="section"><div class="wrap about-grid">
-      <div class="portrait-box"><img style="display:block!important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:3" src="${asset("retrato_sobre_referencia.png")}" alt="Vinicius Araújo lendo" loading="lazy"></div>
-      <div class="about-copy"><p>Conecto estratégia, dados e execução para construir uma presença digital coerente e apoiar o crescimento de marcas e negócios.</p><p>Meu trabalho passa por mídia paga, desenvolvimento de sites e landing pages e análise de performance, sempre com comunicação clara e objetivos alinhados.</p>
-        <div class="mini-grid"><div class="mini"><b>◎</b>Foco em<br>resultado</div><div class="mini"><b>▥</b>Visão<br>estratégica</div><div class="mini"><b>ϟ</b>Execução<br>ágil</div></div>
-      </div>
+    <section class="section about-feature"><div class="wrap about-grid">
+      <div class="about-copy">${eyebrow("Sobre mim")}<h1 class="page-title">Conheça minha <span class="accent">trajetória.</span></h1><p class="page-lead">Sou Vinicius Araújo, tenho 21 anos e atuo no marketing digital com foco em performance, aquisição e presença digital.</p><p>Atuo conectando estratégia, dados e execução para gerar crescimento real para marcas e negócios.</p></div>
+      <div class="portrait-box"><img style="display:block!important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:3" src="${asset("retrato_sobre_referencia.png")}" alt="Vinicius Araújo em retrato profissional" loading="lazy"></div>
+      <div class="mini-grid"><div class="mini"><b>◎</b>Foco em<br>resultado</div><div class="mini"><b>▥</b>Visão<br>estratégica</div><div class="mini"><b>ϟ</b>Execução<br>ágil</div></div>
     </div></section>`,
   "/servicos/": `
     ${pageHero("Serviços", "O que eu <span class='accent'>ofereço.</span>", "Soluções sob medida para a sua necessidade no digital.")}
@@ -115,10 +113,10 @@ const content = {
       ${blogCard("blog_capa_3.png", "PERFORMANCE", "Tráfego pago: como gerar demanda qualificada", "/conteudos/site-que-converte/")}
     </div></section>`,
   "/contato/": `
-    ${pageHero("Contato", "Fale <span class='accent'>comigo.</span>", "Tem um projeto, dúvida ou quer entender como posso ajudar seu negócio a crescer? Envie uma mensagem.")}
-    <section class="section"><div class="wrap contact-grid">
-      <form class="form" id="contact-form"><label>Seu nome<input name="name" autocomplete="name" placeholder="Seu nome" required></label><label>Seu e-mail<input name="email" type="email" autocomplete="email" placeholder="Seu e-mail" required></label><label>Assunto<select name="subject" required><option value="">Assunto</option><option>Sites e landing pages</option><option>Gestão de tráfego pago</option><option>Estratégia digital</option><option>Outro assunto</option></select></label><label>Sua mensagem<textarea name="message" placeholder="Sua mensagem" required></textarea></label><button class="btn" type="submit">Enviar mensagem</button><small id="status" aria-live="polite">Formulário demonstrativo: o envio será conectado quando o canal de atendimento for definido.</small></form>
-      <div class="contact-photo"><img style="display:block!important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:3" src="${asset("retrato_contato_referencia.png")}" alt="Vinicius Araújo com camisa branca" loading="lazy"></div>
+    <section class="section contact-feature"><div class="wrap contact-grid">
+      <div class="contact-copy">${eyebrow("Contato")}<h1 class="page-title">Fale <span class="accent">comigo.</span></h1><p class="page-lead">Tem um projeto, dúvida ou quer entender como posso ajudar seu negócio a crescer? Me envie uma mensagem.</p>
+      <form class="form" id="contact-form"><label>Seu nome<input name="name" autocomplete="name" placeholder="Seu nome" required></label><label>Seu e-mail<input name="email" type="email" autocomplete="email" placeholder="Seu e-mail" required></label><label>Assunto<select name="subject" required><option value="">Assunto</option><option>Sites e landing pages</option><option>Gestão de tráfego pago</option><option>Estratégia digital</option><option>Outro assunto</option></select></label><label>Sua mensagem<textarea name="message" placeholder="Sua mensagem" required></textarea></label><button class="btn" type="submit">Enviar mensagem →</button></form></div>
+      <div class="contact-photo"><img style="display:block!important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:3" src="${asset("retrato_contato_referencia.png")}" alt="Vinicius Araújo em retrato profissional" loading="lazy"></div>
     </div></section>`,
   "/conteudos/site-que-converte/": `
     ${pageHero("Conteúdo · Sites", "Site que converte: 5 elementos essenciais", "Uma boa página deixa claro o que oferece, para quem e qual é o próximo passo.")}

@@ -93,3 +93,26 @@ body{background:radial-gradient(ellipse at 78% 10%,#36115d55,transparent 34%),va
 .hero-visual:before{z-index:0}.hero-visual img{z-index:2}
 
 .hero-visual img,.portrait-box img,.contact-photo img{display:block!important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}.hero-visual:before,.portrait-box:after{z-index:1}
+
+/* Approved mockup page compositions */
+.about-feature,.contact-feature{padding-top:58px;padding-bottom:64px}
+.about-grid{grid-template-columns:1.08fr .92fr;gap:38px;align-items:center}
+.about-copy .page-title,.contact-copy .page-title{max-width:680px;font-size:clamp(36px,5vw,58px);line-height:1.02;margin:14px 0 18px}
+.about-copy .page-lead,.contact-copy .page-lead{max-width:610px;font-size:18px;line-height:1.55;color:#e2e0e8}
+.about-copy>p:not(.eyebrow):not(.page-lead){max-width:600px;color:#d5d3dc;line-height:1.65}
+.about-grid>.mini-grid{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:6px}
+.about-grid>.portrait-box{height:500px}
+.contact-grid{grid-template-columns:1.05fr .95fr;gap:42px;align-items:stretch}
+.contact-copy{min-width:0}
+.contact-photo{height:auto;min-height:620px}
+.contact-copy .form{margin-top:24px}
+.contact-copy .form .btn{width:100%;justify-content:center}
+@media(max-width:760px){
+ .about-feature,.contact-feature{padding-top:34px;padding-bottom:42px}
+ .about-grid,.contact-grid{grid-template-columns:1fr;gap:22px}
+ .about-grid>.portrait-box{height:min(105vw,440px);order:-1}
+ .about-grid>.mini-grid{grid-column:auto;grid-template-columns:repeat(3,1fr)}
+ .contact-photo{min-height:0;height:min(105vw,440px);order:-1}
+ .about-copy .page-title,.contact-copy .page-title{font-size:clamp(34px,9vw,48px)}
+ .about-copy .page-lead,.contact-copy .page-lead{font-size:16px}
+}
