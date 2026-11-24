@@ -256,3 +256,91 @@ export const documentedCases = [
   {slug:'resultados-industrias-rc', brand:'Indústrias RC', title:'Presença em busca para Indústrias RC', desc:'O painel registrou 64,1 mil impressões e 2,46 mil cliques, com CPC médio de R$ 0,76.', stats:[['Impressões','64,1 mil'],['Cliques','2,46 mil'],['CPC médio','R$ 0,76'],['Conversões','354,95']], insight:'Neste recorte, o volume de impressões mostra a exposição dos anúncios, enquanto o CPC ajuda a interpretar o custo de trazer visitas. A próxima leitura seria separar consultas de marca e de produto para entender de onde veio a demanda.'},
   {slug:'resultados-vivazhen', brand:'Vivazhen Veterinária', title:'Demanda local para Vivazhen', desc:'O painel apresenta 540 cliques e 162 conversões em um recorte de anúncios da clínica.', stats:[['Conversões','162'],['Cliques','540'],['Impressões','8,1 mil'],['CPC médio','R$ 3,33']], insight:'Para uma clínica veterinária, o próximo passo é confrontar as ações registradas na plataforma com as chegadas ao WhatsApp e os agendamentos confirmados. Assim dá para avaliar onde o interesse vira atendimento.'}
 ];
+
+export const portfolioAccounts = [
+  ['Althearin Cristais','Comércio e varejo'],
+  ['Soraya Frignani Advogados','Serviços'],
+  ['Lig Lig Restaurante Chinês','Gastronomia',true],
+  ['Farmarcas','Comércio e varejo'],
+  ['Lopes','Mercado imobiliário'],
+  ['Old Ways Barbearia','Serviços'],
+  ['LATAM Viagens','Viagens'],
+  ['Onivino','Comércio eletrônico'],
+  ['MF Carnes','Gastronomia'],
+  ['Pastéis LM','Gastronomia',true],
+  ['Ju Folheados','Comércio e varejo'],
+  ['VSCloset','Comércio e varejo'],
+  ['Empório Coisas de Minas','Gastronomia'],
+  ['Nataluz · ElevenTickets','Eventos'],
+  ['Oktoberfest · ElevenTickets','Eventos'],
+  ['Thomas Case','Recrutamento e seleção']
+];
+
+export const fictionalScenarios = [
+  {
+    sector:'Restaurantes e delivery', tone:'copper',
+    brands:['Forno Cedrim','Panela Vilaré','Massa Sete Folhas','Bistrô Sazoni','Brasa Campo Nove'],
+    caseTitle:'Do cardápio à operação de mídia',
+    result:'200 pedidos simulados · R$ 16 por pedido',
+    summary:'O exercício combina revisão do cardápio digital, campanhas por horário e comparação de custo por pedido entre canais.',
+    quote:'O painel do exercício me mostrou quais horários mereciam um teste antes de ampliar o orçamento.',
+    speaker:'Gestora fictícia de Forno Cedrim'
+  },
+  {
+    sector:'E-commerce e varejo', tone:'plum',
+    brands:['Vitrine Avelumi','Casa Miralto','Trama Lunária','Ateliê Ponto Violeta','Loja Senda Norte'],
+    caseTitle:'Aquisição por categoria de produto',
+    result:'215 compras simuladas · ROAS de 3,26×',
+    summary:'O cenário usa dados simulados de Shopping e remarketing para priorizar categorias conforme margem e receita atribuída.',
+    quote:'O exemplo tornou mais fácil discutir quais categorias testar primeiro e por quê.',
+    speaker:'Coordenador fictício de Vitrine Avelumi'
+  },
+  {
+    sector:'Serviços B2B', tone:'blue',
+    brands:['Nexorla Operações','Ponte Valeo','Rota Ímpar Consultoria','Oficina Sétima Linha','Rede Córvia Serviços'],
+    caseTitle:'Análise de qualidade dos leads',
+    result:'250 leads simulados · 82 qualificados',
+    summary:'O exercício conecta a origem da conversão a dados de qualificação do CRM para comparar canais além do custo por cadastro.',
+    quote:'A comparação ajudou a visualizar a diferença entre volume de cadastros e oportunidades para o comercial.',
+    speaker:'Gerente fictícia de Nexorla Operações'
+  }
+];
+
+export const careerRoles = [
+  [
+    "Analista de Mídia",
+    "Analiso campanhas, conversões e etapas do funil para orientar testes e decisões de investimento."
+  ],
+  [
+    "Gestor de Tráfego Pago",
+    "Planejo, opero e otimizo campanhas de mídia paga para geração de leads, vendas e pedidos."
+  ],
+  [
+    "Growth Marketing",
+    "Formulo hipóteses e acompanho testes de aquisição e conversão para identificar oportunidades de crescimento."
+  ],
+  [
+    "Estrategista Digital",
+    "Conecto objetivos de negócio, canais, jornada do cliente e indicadores em um plano de atuação."
+  ],
+  [
+    "Head de Performance Marketing",
+    "Coordenei equipes e entregas, organizei prioridades e participei de contratações."
+  ],
+  [
+    "Account Manager · Gestão de Contas",
+    "Acompanho a carteira, alinho expectativas e apresento resultados e próximos passos aos clientes."
+  ],
+  [
+    "Customer Success (CS) · Sucesso do Cliente",
+    "Conduzo onboarding, acompanho a evolução do cliente e apoio a retenção."
+  ],
+  [
+    "Operações de Marketing e Automação",
+    "Estruturo processos e automatizo tarefas com IA e n8n."
+  ],
+  [
+    "Web Designer · Desenvolvimento de Sites",
+    "Desenvolvo sites responsivos, landing pages e cardápios digitais com foco na jornada e na conversão."
+  ]
+];
