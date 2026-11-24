@@ -116,3 +116,49 @@ body{background:radial-gradient(ellipse at 78% 10%,#36115d55,transparent 34%),va
  .about-copy .page-title,.contact-copy .page-title{font-size:clamp(34px,9vw,48px)}
  .about-copy .page-lead,.contact-copy .page-lead{font-size:16px}
 }
+/* Home folds, logo-only header, precise mockup icons, and responsive image crops */
+.top{height:72px}
+.navrow{justify-content:flex-start}
+.top .nav,.top .menu{display:none!important}
+.logo{width:205px;max-width:60vw}
+.hero{grid-template-columns:1.04fr .96fr;min-height:530px}
+.hero-copy{min-width:0}
+.hero h1{font-size:clamp(42px,5vw,68px);overflow-wrap:anywhere}
+.hero-visual{background-image:none!important;overflow:hidden}
+.hero-visual img{object-fit:contain!important;object-position:right bottom!important}
+.proof strong{color:var(--violet);display:flex;align-items:center;justify-content:center}
+.proof strong svg,.ico svg{width:38px;height:38px;display:block}
+.card .ico{color:var(--orange);margin-bottom:16px}
+.card.featured .ico{color:#e84cff}
+.card .arrow{color:var(--orange)}
+.home-fold{scroll-margin-top:84px}
+.fold-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.fold-copy h2{font-size:clamp(36px,4vw,54px);line-height:1.05}
+.fold-copy p{max-width:560px;color:#d5d3dc;line-height:1.65}
+.fold-photo{height:440px;position:relative;overflow:hidden;border-radius:16px;background:#16131f}
+.fold-photo img{width:100%;height:100%;object-fit:contain;object-position:center bottom;position:absolute;inset:0}
+.text-link{color:#fff;font-weight:700;text-decoration:none}
+.text-link:hover{color:var(--orange)}
+#portfolio .case-row img{width:100%;height:100%;object-fit:cover}
+@media(max-width:850px){
+ .hero{grid-template-columns:1fr .9fr;min-height:460px}
+ .hero h1{font-size:clamp(36px,5.2vw,48px)}
+}
+@media(max-width:650px){
+ .top{height:62px}
+ .logo{width:174px}
+ .hero{display:flex;flex-direction:column;align-items:stretch;min-height:0;width:100%;padding-inline:17px}
+ .hero-visual{height:min(86vw,380px);width:100%;order:-1;margin-top:0;border-radius:0}
+ .hero-visual img{object-fit:contain!important;object-position:center bottom!important}
+ .hero-copy{padding:28px 0 34px;overflow-wrap:anywhere}
+ .hero h1{font-size:clamp(34px,9vw,46px);line-height:1.05}
+ .lead{max-width:100%;line-height:1.5}
+ .proof{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:16px 17px}
+ .proof div{font-size:11px;gap:8px}
+ .proof strong svg{width:24px;height:24px}
+ .section{padding:48px 0}
+ .fold-grid{grid-template-columns:1fr;gap:24px}
+ .fold-photo{height:min(90vw,380px);order:-1}
+ .grid.three{grid-template-columns:1fr}
+ #portfolio .case-row{grid-template-columns:90px 1fr auto}
+}

@@ -7,7 +7,7 @@ const pages = [
   ["Contato", "/contato/"]
 ];
 const path = location.pathname.replace(/index\.html$/, "");
-const asset = name => `/assets/img/${name}?v=approved3`;
+const asset = name => `/assets/img/${name}?v=approved4`;
 const link = (url, label, cls = "") =>
   `<a class="${cls} ${path === url ? "active" : ""}" href="${url}">${label}</a>`;
 const button = (url, label, cls = "") =>
@@ -51,6 +51,14 @@ const blogCard = (image, category, title, href) => `
     <img class="blog-art" src="${asset(image)}" alt="" loading="lazy">
     <div class="pad"><small>${category}</small><h3>${title}</h3><span class="arrow" aria-hidden="true">→</span></div>
   </a>`;
+const icons = {
+  monitor: '<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="7" width="38" height="27" rx="2" fill="none" stroke="currentColor" stroke-width="3"/><path d="M18 41h12M24 34v7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>',
+  megaphone: '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 20v9h8l20 9V11l-20 9H6Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="m14 29 5 12h7l-6-10M39 19l5-4M40 25h6M39 31l5 4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>',
+  layers: '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="m24 5 19 10-19 10L5 15 24 5Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="m7 24 17 9 17-9M7 33l17 9 17-9" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>',
+  bars: '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 41V25h8v16M21 41V15h8v26M34 41V6h8v35" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>',
+  rocket: '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M27 7c6-4 12-4 15-4 0 4 0 10-4 16L24 33l-9-9L27 7Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="m15 24-8 2-4 8 11-1M24 33l-2 8 8 4 1-11M12 37l-4 5" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/></svg>',
+  target: '<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="22" cy="26" r="16" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="22" cy="26" r="9" fill="none" stroke="currentColor" stroke-width="3"/><path d="m22 26 19-19m-8 0h8v8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+};
 const content = {
   "/": `
     <section class="hero wrap">
@@ -60,25 +68,37 @@ const content = {
         <p class="lead">Marketing, tráfego pago, sites e performance para gerar mais visibilidade, oportunidades e resultados reais.</p>
         <div class="actions">${button("/contato/", "Fale comigo")}${button("/servicos/", "Ver serviços", "ghost")}</div>
       </div>
-      <div class="hero-visual"><img style="display:block!important;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:55% 38%;z-index:3" src="${asset("retrato_hero_referencia.png")}" alt="Vinicius Araújo, retrato de perfil"></div>
+      <div class="hero-visual"><img style="display:block!important;position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:right bottom;z-index:3" src="${asset("retrato_hero_referencia.png")}" alt="Vinicius Araújo, retrato de perfil"></div>
     </section>
     <section class="proof-wrap"><div class="wrap proof">
-      <div><strong aria-hidden="true">◫</strong><span><b>Planejamento</b><br>com objetivos claros</span></div>
-      <div><strong aria-hidden="true">↗</strong><span><b>Performance</b><br>com foco em resultado</span></div>
-      <div><strong aria-hidden="true">▱</strong><span><b>Mensuração</b><br>para orientar decisões</span></div>
-      <div><strong aria-hidden="true">◎</strong><span><b>Execução</b><br>do plano à otimização</span></div>
+      <div><strong aria-hidden="true">${icons.bars}</strong><span><b>Planejamento</b><br>com objetivos claros</span></div>
+      <div><strong aria-hidden="true">${icons.rocket}</strong><span><b>Performance</b><br>com foco em resultado</span></div>
+      <div><strong aria-hidden="true">${icons.layers}</strong><span><b>Mensuração</b><br>para orientar decisões</span></div>
+      <div><strong aria-hidden="true">${icons.target}</strong><span><b>Execução</b><br>do plano à otimização</span></div>
     </div></section>
     <section class="section">
       <div class="wrap">
         <div class="section-head"><div>${eyebrow("Como posso te ajudar")}<h2>Soluções digitais que<br>geram <span class="accent">resultados.</span></h2></div><p>Projetos e estratégias pensados para atrair, converter e dar consistência ao crescimento do seu negócio.</p></div>
-        <div class="grid three">
-          <article class="card"><div class="ico" aria-hidden="true">▣</div><h3>Sites e landing pages</h3><p>Experiências rápidas e responsivas, construídas para transformar visitas em conversas e oportunidades.</p><a class="arrow" href="/servicos/sites/" aria-label="Explorar sites e landing pages">→</a></article>
-          <article class="card featured"><div class="ico" aria-hidden="true">♧</div><h3>Gestão de tráfego pago</h3><p>Planejamento, configuração e otimização de campanhas em Google Ads e Meta Ads.</p><a class="arrow" href="/servicos/trafego-pago/" aria-label="Explorar gestão de tráfego pago">→</a></article>
-          <article class="card"><div class="ico" aria-hidden="true">▱</div><h3>Estratégia &amp; performance</h3><p>Diagnóstico e mensuração para conectar mídia, páginas e objetivos de negócio.</p><a class="arrow" href="/servicos/" aria-label="Conhecer a abordagem de estratégia e performance">→</a></article>
+        <div id="servicos" class="grid three">
+          <article class="card"><div class="ico" aria-hidden="true">${icons.monitor}</div><h3>Sites e Landing Pages</h3><p>Sites modernos, rápidos e focados em conversão e resultados.</p><a class="arrow" href="/servicos/sites/" aria-label="Explorar sites e landing pages">→</a></article>
+          <article class="card featured"><div class="ico" aria-hidden="true">${icons.megaphone}</div><h3>Gestão de Tráfego Pago</h3><p>Planejamento, execução e otimização de campanhas no Meta Ads e Google Ads.</p><a class="arrow" href="/servicos/trafego-pago/" aria-label="Explorar gestão de tráfego pago">→</a></article>
+          <article class="card"><div class="ico" aria-hidden="true">${icons.layers}</div><h3>Estratégia &amp; Performance</h3><p>Diagnóstico, mensuração e estruturação digital para crescimento contínuo.</p><a class="arrow" href="/servicos/" aria-label="Conhecer a abordagem de estratégia e performance">→</a></article>
         </div>
         <div class="band"><div><h3>Vamos construir resultados juntos?</h3><p>Converse comigo sobre seu projeto e os próximos passos.</p></div>${button("/contato/", "Fale comigo", "band-button")}</div>
       </div>
-    </section>`,
+    </section>
+    <section id="sobre" class="section home-fold about-fold"><div class="wrap fold-grid">
+      <div class="fold-copy">${eyebrow("Sobre mim")}<h2>Conheça minha <span class="accent">trajetória.</span></h2><p>Sou Vinicius Araújo e atuo no marketing digital com foco em performance, aquisição e presença digital.</p><p>Conecto estratégia, dados e execução para gerar crescimento real para marcas e negócios.</p><a class="text-link" href="/sobre/">Conheça mais sobre mim →</a></div>
+      <div class="fold-photo"><img src="${asset("retrato_hero_referencia.png")}" alt="Vinicius Araújo em retrato profissional" loading="lazy"></div>
+    </div></section>
+    <section id="portfolio" class="section home-fold"><div class="wrap">
+      <div class="section-head"><div>${eyebrow("Portfólio / cases")}<h2>Projetos com foco em <span class="accent">resultado.</span></h2></div><a class="text-link" href="/portfolio/">Ver portfólio completo →</a></div>
+      <div class="case-list">
+        <article class="case-row"><img src="${asset("case_1_imagem.png")}" alt="Demonstração de site para negócio local" loading="lazy"><div><small>PROJETO CONCEITUAL · DEMONSTRAÇÃO</small><h3>Presença digital para negócio local</h3><p>Estrutura de site institucional, conteúdo e caminho de contato.</p></div><span class="arrow" aria-hidden="true">→</span></article>
+        <article class="case-row"><img src="${asset("case_2_imagem.png")}" alt="Demonstração de estratégia de aquisição digital" loading="lazy"><div><small>PROJETO CONCEITUAL · DEMONSTRAÇÃO</small><h3>Estratégia de aquisição digital</h3><p>Campanhas, página de destino e mensuração de oportunidades.</p></div><span class="arrow" aria-hidden="true">→</span></article>
+      </div>
+      <p class="case-note">Demonstrações conceituais; nenhum resultado de cliente é apresentado.</p>
+    </div></section>`,
   "/sobre/": `
     <section class="section about-feature"><div class="wrap about-grid">
       <div class="about-copy">${eyebrow("Sobre mim")}<h1 class="page-title">Conheça minha <span class="accent">trajetória.</span></h1><p class="page-lead">Sou Vinicius Araújo, tenho 21 anos e atuo no marketing digital com foco em performance, aquisição e presença digital.</p><p>Atuo conectando estratégia, dados e execução para gerar crescimento real para marcas e negócios.</p></div>
