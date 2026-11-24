@@ -1,6 +1,6 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { areas, projects, posts, questions, professionalSkills, portfolioWebsites, portfolioWork, mediaCases, canvaBrands } from './content.mjs';
+import { areas, projects, posts, questions, professionalSkills, portfolioWebsites, portfolioWork, mediaCases, portfolioBrands, documentedCases } from './content.mjs';
 
 const out = resolve(process.argv[2] || '.');
 const base = (process.env.SITE_URL || '').replace(/\/$/, '');
@@ -39,7 +39,7 @@ const home = `
 ${section(`<div class="section-head"><div>${heading('Áreas de atuação','Estratégia e performance <em>na prática.</em>')}</div><p>Minha atuação reúne mídia paga, desenvolvimento web e mensuração ao longo da jornada.</p></div>${areaCards()}`, '', 'servicos')}
 ${about()}
 ${approach()}
-${section(`<div class="split"><div>${heading('Projetos','Projetos e <em>estudos de caso.</em>','Explore estudos de mídia paga, decisões de orçamento e trabalhos de presença digital.')}${button('/portfolio/','Ver todos os projetos','ghost')}</div><div class="grid two">${mediaCases.slice(0,2).map(mediaCard).join('')}</div></div>`, 'lined', 'portfolio')}
+${section(`<div class="split"><div>${heading('Projetos','Projetos e <em>estudos de caso.</em>','Veja resultados registrados em mídia paga e trabalhos de presença digital.')}${button('/portfolio/','Ver todos os projetos','ghost')}</div><div class="grid two">${documentedCases.slice(0,2).map(documentedCard).join('')}</div></div>`, 'lined', 'portfolio')}
 ${section(`<div class="split"><div>${heading('Blog','Conteúdos sobre <em>marketing digital.</em>','Artigos sobre campanhas, páginas e análise de desempenho.')}${button('/conteudos/','Ver todos os artigos','ghost')}</div><div class="carousel" data-carousel><div class="carousel-track" tabindex="0" aria-label="Artigos">${postCards}</div><div class="carousel-controls" role="group" aria-label="Posições do carrossel" hidden><button type="button" aria-label="Ir para posição 1" aria-current="true">1</button><button type="button" aria-label="Ir para posição 2" aria-current="false">2</button></div></div></div>`, 'lined')}
 ${section(`<div class="split"><div>${heading('Perguntas frequentes','Sobre este <em>portfólio.</em>')}</div><div class="faq">${questions.map(([q,a],i)=>`<details ${i===0?'open':''} name="faq"><summary>${q}</summary><p>${a}</p></details>`).join('')}</div></div>`, 'lined')}
 ${contact()}`;
@@ -67,14 +67,46 @@ function mediaCard(item) {
 }
 const mediaPortfolio = section(heading('Mídia paga','Gestão de tráfego e <em>análise de mídia.</em>','Três estudos com dados simulados mostram como comparo canais, interpreto indicadores e priorizo os próximos testes.')+`
   <div class="grid three">${mediaCases.map(mediaCard).join('')}</div>`,'about-section');
-const brands = [...canvaBrands,...portfolioWebsites.filter(site=>!canvaBrands.some(brand=>brand.title===site.title))];
-const brandsBySector = new Map();
-for (const brand of brands) {
-  if (!brandsBySector.has(brand.category)) brandsBySector.set(brand.category,[]);
-  brandsBySector.get(brand.category).push(brand);
+function documentedCard(item) {
+  const brand = portfolioBrands.find(brand=>brand.title===item.brand);
+  const [metric,value] = item.stats[0];
+  return `<a class="card media-case documented-card" href="${route('portfolio',item)}">
+    <div class="brand-card-head"><img class="directory-mark" src="/assets/img/${brand.mark}" width="56" height="56" loading="lazy" alt=""><small>Google Ads · Registro de campanha</small></div>
+    <strong class="result-number">${value} <span>${metric.toLowerCase()}</span></strong>
+    <h3>${item.title}</h3><p>${item.desc}</p><span aria-hidden="true">Ver case →</span>
+  </a>`;
 }
-const brandDirectory = section(heading('Clientes por nicho','Marcas do <em>portfólio.</em>','Seleção de marcas atendidas em diferentes frentes de marketing e presença digital.')+`
-  <div class="brand-directory">${[...brandsBySector].map(([name,brands])=>`<article class="brand-group"><h3>${name}</h3><ul>${brands.map(({title,mark})=>`<li>${mark?`<img class="directory-mark" src="/assets/img/${mark}" width="52" height="44" loading="lazy" alt="">`:''}<span>${title}</span></li>`).join('')}</ul></article>`).join('')}</div>`,'lined about-section');
+const documentedPortfolio = section(heading('Mídia paga','Resultados de <em>campanha.</em>','Três recortes dos painéis de Google Ads reunidos no meu portfólio profissional.')+`
+  <div class="grid three">${documentedCases.map(documentedCard).join('')}</div>`,'about-section');
+const brandCards = portfolioBrands.map(({title,category,mark,url})=>{
+  const destination = new URL(url).hostname.endsWith('instagram.com') ? 'Instagram' : 'Site';
+  return `<a class="card catalog-card brand-card" data-category="${category}" href="${url}" target="_blank" rel="noopener noreferrer" aria-label="${title}, abrir ${destination} em nova aba">
+    <img class="directory-mark" src="/assets/img/${mark}" width="64" height="64" loading="lazy" alt="">
+    <h3>${title}</h3><small>${category}</small><span class="catalog-action" aria-hidden="true">${destination} oficial ↗</span>
+  </a>`;
+}).join('');
+const brandDirectory = section(heading('Clientes por nicho','Marcas do <em>portfólio.</em>','Selecione um setor ou busque uma marca. Cada cartão abre o site ou Instagram oficial em uma nova aba.')+`
+  <div class="catalog" data-listing data-page-size="8">
+    <div class="filters">
+      <label>Buscar marca<input type="search" data-search placeholder="Nome da marca"></label>
+      <label>Setor<select data-filter aria-label="Setor das marcas"><option value="">Todos os setores</option>${[...new Set(portfolioBrands.map(brand=>brand.category))].sort((a,b)=>a.localeCompare(b,'pt-BR')).map(category=>`<option>${category}</option>`).join('')}</select></label>
+    </div>
+    <div class="grid brand-directory">${brandCards}</div>
+    <p data-empty role="status" hidden>Nenhuma marca encontrada.</p>
+    <div class="pagination" data-pagination role="group" aria-label="Páginas das marcas"></div>
+  </div>`,'lined about-section');
+for (const item of documentedCases) {
+  const brand = portfolioBrands.find(brand=>brand.title===item.brand);
+  add(route('portfolio',item),item.title,item.desc,pageHero('Registro de campanha · Google Ads',item.title,item.desc)+section(`
+    <article class="narrow">
+      <div class="documented-brand"><a href="${brand.url}" target="_blank" rel="noopener noreferrer" aria-label="Abrir site de ${brand.title} em nova aba"><img class="directory-mark" src="/assets/img/${brand.mark}" width="64" height="64" alt=""></a><p>${brand.title} · ${brand.category}</p></div>
+      <h2>Resultados do painel</h2>
+      <dl class="metrics">${item.stats.map(([title,value])=>`<div><dt>${title}</dt><dd>${value}</dd></div>`).join('')}</dl>
+      <h2>Como leio os resultados</h2><p>${item.insight}</p>
+      <p class="result-source">Fonte: captura do Google Ads arquivada no meu portfólio. As conversões são ações registradas pela plataforma.</p>
+      ${button('/portfolio/','Ver todos os projetos','ghost')}
+    </article>`,'lined'));
+}
 const currency = new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
 const count = new Intl.NumberFormat('pt-BR');
 const decimal = new Intl.NumberFormat('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
@@ -127,7 +159,7 @@ const workPortfolio = section(heading('Experiência aplicada','Mídia, automaç�
   <div class="grid three">${portfolioWork.map(({icon,title,desc})=>`<article class="card area">${icons[icon]}<h3>${title}</h3><p>${desc}</p></article>`).join('')}</div>`,'lined about-section');
 const conceptPortfolio = section(heading('Estudos conceituais','Estratégias <em>em prática.</em>','Exercícios que mostram como estruturo um site institucional ou uma jornada de aquisição.')+`
   <div class="grid two">${projectCards}</div>`,'lined about-section');
-add('/portfolio/','Projetos','Trabalhos selecionados de Vinicius Araújo em sites, mídia paga, automação e conteúdo, com estudos conceituais de estratégia digital.',pageHero('Portfólio','Projetos e <em>trabalhos selecionados.</em>','Uma seleção do meu portfólio, com sites, mídia paga, automação e produção de conteúdo.')+mediaPortfolio+brandDirectory+websitePortfolio+workPortfolio+conceptPortfolio);
+add('/portfolio/','Projetos','Trabalhos selecionados de Vinicius Araújo em sites, mídia paga, automação e conteúdo, com estudos conceituais de estratégia digital.',pageHero('Portfólio','Projetos e <em>trabalhos selecionados.</em>','Uma seleção do meu portfólio, com sites, mídia paga, automação e produção de conteúdo.')+documentedPortfolio+brandDirectory+websitePortfolio+mediaPortfolio+workPortfolio+conceptPortfolio);
 for(const item of projects) add(route('portfolio',item),item.title,item.desc,pageHero(item.type,item.title,item.desc)+section(`<div class="narrow article">${img(item.image)}${item.body.map(([h,p])=>`<h2>${h}</h2><p>${p}</p>`).join('')}${button('/portfolio/','Todos os projetos','ghost')}</div>`,'lined'));
 add('/conteudos/','Blog','Artigos sobre mídia paga, experiências web e mensuração.',pageHero('Blog','Marketing digital <em>na prática.</em>','Artigos sobre como organizar campanhas, estruturar páginas e interpretar indicadores.')+listing('conteudos',posts));
 for(const item of posts) add(route('conteudos',item),item.title,item.desc,pageHero(item.category,item.title,item.desc)+section(`<article class="narrow article"><p class="byline">Por <a href="/sobre/">Vinicius Araújo</a> · ${Math.max(1,Math.ceil(item.body.flat().join(' ').split(/\s+/).length/180))} min de leitura</p>${img(item.image)}<nav aria-label="Sumário"><h2>Neste artigo</h2><ol>${item.body.map(([h],i)=>`<li><a href="#parte-${i+1}">${h}</a></li>`).join('')}</ol></nav>${item.body.map(([h,p],i)=>`<h2 id="parte-${i+1}">${h}</h2><p>${p}</p>`).join('')}<button type="button" class="button ghost" data-share>Compartilhar artigo</button><span role="status" data-share-status></span></article>`,'lined')+section(heading('Blog','Leituras <em>relacionadas.</em>')+`<div class="grid two">${posts.filter(p=>p!==item).map(p=>card('conteudos',p)).join('')}</div>`),item);

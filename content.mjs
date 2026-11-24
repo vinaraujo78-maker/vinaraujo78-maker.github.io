@@ -110,22 +110,149 @@ export const mediaCases = [
   }
 ];
 
-export const canvaBrands = [
-  {title:'RE/MAX Brasil', category:'Mercado imobiliário', mark:'canva-remax.png'},
-  {title:'Boteco em Casa', category:'Gastronomia', mark:'canva-boteco-em-casa.png'},
-  {title:'Lavblue', category:'Serviços', mark:'canva-lavblue.png'},
-  {title:'Instituto Chiavenato', category:'Educação', mark:'canva-chiavenato.png'},
-  {title:'Império Bijoux', category:'Comércio e varejo', mark:'canva-imperio-bijoux.png'},
-  {title:'Casa Matarazzo Pizzaria', category:'Gastronomia', mark:'canva-casa-matarazzo.png'},
-  {title:'FH Motos', category:'Automotivo', mark:'canva-fh-motos.png'},
-  {title:'Freedom Sports', category:'Esporte', mark:'canva-freedom-sports.png'},
-  {title:'Biomist', category:'Comércio e varejo', mark:'canva-biomist.png'},
-  {title:'Bubble Box', category:'Serviços', mark:'canva-bubble-box.png'},
-  {title:'ALC Foods', category:'Gastronomia', mark:'canva-alcfoods.png'},
-  {title:'MegaIP Connect', category:'Telecomunicações', mark:'canva-megaip.png'},
-  {title:'Artsolda', category:'Indústria e logística', mark:'canva-artsolda.png'},
-  {title:'Indústrias RC', category:'Indústria e logística', mark:'canva-industrias-rc.png'},
-  {title:'Vivazhen Veterinária', category:'Saúde animal', mark:'canva-vivazhen.png'},
-  {title:'Real Portões Automáticos', category:'Indústria e logística', mark:'canva-real-portoes.png'},
-  {title:'Pastéis LM', category:'Gastronomia', mark:'canva-pasteis-lm.png'}
+export const portfolioBrands = [
+  {
+    "title": "RE/MAX Brasil",
+    "category": "Mercado imobiliário",
+    "url": "https://www.remax.com.br/",
+    "mark": "canva-remax.png"
+  },
+  {
+    "title": "Boteco em Casa",
+    "category": "Gastronomia",
+    "url": "https://botecoemcasa.com.br/",
+    "mark": "marca-boteco.png"
+  },
+  {
+    "title": "Lavblue",
+    "category": "Serviços",
+    "url": "https://www.lavblue.com.br/",
+    "mark": "marca-lavblue.png"
+  },
+  {
+    "title": "Instituto Chiavenato",
+    "category": "Educação",
+    "url": "https://chiavenato.com/pt/",
+    "mark": "marca-chiavenato.png"
+  },
+  {
+    "title": "Casa Matarazzo Pizzaria",
+    "category": "Gastronomia",
+    "url": "https://www.instagram.com/casamatarazzo_pizzaria/",
+    "mark": "canva-casa-matarazzo.png"
+  },
+  {
+    "title": "FH Motos",
+    "category": "Automotivo",
+    "url": "https://www.fhmotos.com.br/empresa",
+    "mark": "marca-fh.png"
+  },
+  {
+    "title": "Freedom Sports",
+    "category": "Esporte",
+    "url": "https://www.usefreedomsports.com.br/",
+    "mark": "marca-freedom.png"
+  },
+  {
+    "title": "Biomist",
+    "category": "Comércio e varejo",
+    "url": "https://www.biomist.com.br/",
+    "mark": "marca-biomist.png"
+  },
+  {
+    "title": "Bubble Box",
+    "category": "Serviços",
+    "url": "https://bubblebox.com.br/",
+    "mark": "marca-bubble.png"
+  },
+  {
+    "title": "ALC Foods",
+    "category": "Gastronomia",
+    "url": "https://www.instagram.com/alcfoods/",
+    "mark": "canva-alcfoods.png"
+  },
+  {
+    "title": "MegaIP Connect",
+    "category": "Telecomunicações",
+    "url": "https://megaipconnect.com.br/",
+    "mark": "canva-megaip.png"
+  },
+  {
+    "title": "Artsolda",
+    "category": "Indústria e logística",
+    "url": "https://artsolda.com.br/contatos.asp",
+    "mark": "marca-artsolda.png"
+  },
+  {
+    "title": "Indústrias RC",
+    "category": "Indústria e logística",
+    "url": "https://www.industriasrc.com.br/",
+    "mark": "marca-industrias.svg"
+  },
+  {
+    "title": "Vivazhen Veterinária",
+    "category": "Saúde animal",
+    "url": "https://vivazhenveterinaria.com.br",
+    "mark": "canva-vivazhen.png"
+  },
+  {
+    "title": "Mr. Hoppy",
+    "category": "Gastronomia",
+    "url": "https://mrhoppy.com.br",
+    "mark": "marca-mister.png"
+  },
+  {
+    "title": "Loja Disko",
+    "category": "Comércio eletrônico",
+    "url": "https://www.lojadisko.com.br",
+    "mark": "marca-disko.svg"
+  },
+  {
+    "title": "HD Lubrificantes",
+    "category": "Indústria e logística",
+    "url": "https://hdlubrificantes.com.br",
+    "mark": "marca-hdlub.jpg"
+  },
+  {
+    "title": "Renov Administradora",
+    "category": "Serviços",
+    "url": "https://renovadm.com",
+    "mark": "marca-renov.png"
+  },
+  {
+    "title": "Renov Portaria",
+    "category": "Serviços",
+    "url": "https://renovportaria.com.br/home/",
+    "mark": "marca-portaria.png"
+  },
+  {
+    "title": "Marques Araújo",
+    "category": "Serviços",
+    "url": "https://marquesaraujo.adv.br",
+    "mark": "marca-marques.png"
+  },
+  {
+    "title": "BPower Motorsport",
+    "category": "Automotivo",
+    "url": "https://bpowermotorsport.com.br",
+    "mark": "marca-bpower.png"
+  },
+  {
+    "title": "HD Express",
+    "category": "Indústria e logística",
+    "url": "https://hdexpress.com.br",
+    "mark": "marca-hdexpress.png"
+  },
+  {
+    "title": "Gráfica Cartex",
+    "category": "Indústria e logística",
+    "url": "https://graficacartex.com.br",
+    "mark": "marca-cartex.png"
+  }
+];
+
+export const documentedCases = [
+  {slug:'resultados-artsolda', brand:'Artsolda', title:'Aquisição industrial para Artsolda', desc:'Um recorte de Google Ads com 434,67 conversões registradas no painel.', stats:[['Conversões','434,67'],['Cliques','1,87 mil'],['CPC médio','R$ 1,30']], insight:'O recorte mostra o volume de ações que o Google Ads registrou e quanto custou, em média, atrair um clique. Para avaliar o valor comercial dessas ações, eu cruzaria as conversões com pedidos de orçamento qualificados no CRM.'},
+  {slug:'resultados-industrias-rc', brand:'Indústrias RC', title:'Presença em busca para Indústrias RC', desc:'O painel registrou 64,1 mil impressões e 2,46 mil cliques, com CPC médio de R$ 0,76.', stats:[['Impressões','64,1 mil'],['Cliques','2,46 mil'],['CPC médio','R$ 0,76'],['Conversões','354,95']], insight:'Neste recorte, o volume de impressões mostra a exposição dos anúncios, enquanto o CPC ajuda a interpretar o custo de trazer visitas. A próxima leitura seria separar consultas de marca e de produto para entender de onde veio a demanda.'},
+  {slug:'resultados-vivazhen', brand:'Vivazhen Veterinária', title:'Demanda local para Vivazhen', desc:'O painel apresenta 540 cliques e 162 conversões em um recorte de anúncios da clínica.', stats:[['Conversões','162'],['Cliques','540'],['Impressões','8,1 mil'],['CPC médio','R$ 3,33']], insight:'Para uma clínica veterinária, o próximo passo é confrontar as ações registradas na plataforma com as chegadas ao WhatsApp e os agendamentos confirmados. Assim dá para avaliar onde o interesse vira atendimento.'}
 ];
