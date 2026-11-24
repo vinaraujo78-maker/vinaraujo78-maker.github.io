@@ -1,1 +1,0 @@
-window.VA_CONFIG={siteUrl:'',email:'',whatsapp:'',formEnabled:false,analytics:{gtm:'',ga4:'',clarity:'',googleAdsConversionId:'',googleAdsConversionLabel:'',metaPixel:''}};
