@@ -78,7 +78,18 @@ for (const [path,page] of pages) {
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/css/site.css"><script defer src="/assets/js/config.js"></script><script defer src="/assets/js/site.js"></script>${data?`<script type="application/ld+json">${JSON.stringify(data).replaceAll('<','\\u003c')}</script>`:''}</head>
 <body><a class="skip" href="#main">Pular para o conteúdo</a><header class="top"><div class="wrap navrow">${logo}<button class="menu" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button><nav id="site-nav" aria-label="Navegação principal">${nav(path)}</nav>${button('/contato/','Contato profissional','nav-cta')}</div></header>
 <main id="main">${path==='/'?'':`<nav class="wrap crumbs" aria-label="Caminho da página"><a href="/">Início</a>${group&&group[0]!==path?`<a href="${group[0]}">${group[1]}</a>`:''}<span aria-current="page">${escape(page.title)}</span></nav>`}${page.html}</main>
-<footer class="footer"><div class="wrap foot">${logo}<small>© 2026 Vinicius Araújo</small><nav aria-label="Rodapé">${nav(path)}<a href="/privacidade/">Privacidade</a><a href="/cookies/">Cookies</a></nav><div data-social></div></div></footer></body></html>`);
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-main">
+      <div class="footer-brand">${logo}<div><strong>Vinicius Araújo</strong><p>Marketing &amp; performance digital</p></div></div>
+      <nav aria-label="Navegação do rodapé">${nav(path)}<span data-social></span></nav>
+    </div>
+    <div class="footer-bottom">
+      <small>© 2026 Vinicius Araújo</small>
+      <nav aria-label="Informações legais"><a href="/privacidade/">Privacidade</a><a href="/cookies/">Cookies</a></nav>
+    </div>
+  </div>
+</footer></body></html>`);
 }
 await writeFile(resolve(out,'robots.txt'),base?`User-agent: *\nAllow: /\nSitemap: ${base}/sitemap.xml\n`:'User-agent: *\nDisallow: /\n');
 await writeFile(resolve(out,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${base?[...pages.keys()].filter(p=>p!=='/404.html').map(p=>`<url><loc>${base+p}</loc></url>`).join(''):''}</urlset>\n`);

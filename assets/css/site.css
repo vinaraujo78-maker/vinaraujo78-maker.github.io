@@ -25,7 +25,7 @@ small{font-size:.8rem}
 .navrow{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1.5rem}
 .brand{display:inline-flex;flex:none}
 .brand img{width:50px;height:40px;object-fit:contain}
-#site-nav,.foot nav{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(.85rem,2.1vw,2.1rem);font-size:.9rem;font-weight:600}
+#site-nav,.footer-main nav{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(.85rem,2.1vw,2.1rem);font-size:.9rem;font-weight:600}
 nav a:hover,nav [aria-current=page]{color:var(--orange)}
 #site-nav [aria-current=page]{text-decoration:underline;text-underline-offset:.65em;text-decoration-thickness:2px}
 .button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.65rem 1.2rem;border:1px solid var(--orange);border-radius:999px;background:var(--orange);color:#151018;font-size:.88rem;font-weight:700;text-align:center;transition:background .18s,border-color .18s}
@@ -124,14 +124,32 @@ fieldset:disabled input,fieldset:disabled textarea,fieldset:disabled select,fiel
 .article ol,.narrow ul{padding-left:1.5rem}
 .filters{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:1rem}
 .filters label{min-width:min(100%,220px)}
-.footer{border-top:1px solid var(--line);padding:1.5rem 0}
-.foot{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.5rem}
-.foot small{color:var(--muted)}
-.foot nav{gap:.5rem 1rem;font-size:.82rem}
-.floating{position:fixed;z-index:6;right:max(1rem,env(safe-area-inset-right));bottom:max(1rem,env(safe-area-inset-bottom));display:grid;place-items:center;width:54px;height:54px;background:#087543;color:#fff;border:1px solid #78e7a8;border-radius:50%;box-shadow:0 6px 22px #0007;transition:background .18s}
-.floating:hover{background:#096137}
-.floating svg{width:30px;height:30px}
-body:has(.floating) .footer{padding-bottom:calc(5rem + env(safe-area-inset-bottom))}
+.footer{border-top:1px solid var(--line);background:#0e0e16;padding:clamp(1.5rem,4vw,3rem) 0 1.25rem}
+.footer-main,.footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:1.25rem}
+.footer-brand{display:flex;align-items:center;gap:.9rem}
+.footer-brand .brand img{width:46px}
+.footer-brand strong{font-family:Sora,Inter,sans-serif}
+.footer-brand p{margin:0;font-size:.85rem}
+.footer-main nav{gap:.35rem 1.25rem}
+.footer-main [data-social]{display:contents}
+.footer-main nav a,.footer-bottom a{display:inline-flex;align-items:center;min-height:44px}
+.footer-bottom{border-top:1px solid var(--line);margin-top:1.1rem;padding-top:.65rem;color:var(--muted)}
+.footer-bottom nav{display:flex;gap:.35rem 1rem;font-size:.85rem}
+.floating{position:fixed;z-index:6;right:max(1.2rem,env(safe-area-inset-right));bottom:max(1.2rem,env(safe-area-inset-bottom));display:grid;place-items:center;width:56px;height:56px;background:#25d366;color:#092d1b;border:1px solid #71ed9d;border-radius:50%;box-shadow:0 5px 20px #0a0f0c80;transition:background .18s,transform .18s}
+.floating::before{content:'';position:absolute;inset:-1px;border:2px solid #25d366;border-radius:inherit;animation:whatsapp-pulse 2.4s ease-out infinite;pointer-events:none}
+.floating:hover,.floating:focus-visible{background:#60e68f;transform:translateY(-2px)}
+.floating:hover::before,.floating:focus-visible::before{animation:none;opacity:0}
+.floating svg{width:31px;height:31px}
+@keyframes whatsapp-pulse{0%{transform:scale(1);opacity:.65}74%,100%{transform:scale(1.48);opacity:0}}
+body:has(.floating) .footer>.wrap{padding-right:4rem}
+@media(max-width:850px){.footer-main{align-items:flex-start;flex-direction:column;gap:.6rem}}
+@media(max-width:460px){
+  .footer-main nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;gap:0 .6rem}
+  .footer-bottom{align-items:flex-start;flex-direction:column;gap:0}
+  body:has(.floating) .footer>.wrap{padding-right:0}
+  body:has(.floating) .footer-bottom{padding-right:4.25rem}
+}
+@media(prefers-reduced-motion:reduce){.floating::before{animation:none;opacity:0}}
 @media(max-width:1000px){.steps,.four{grid-template-columns:repeat(2,minmax(0,1fr))}.nav-cta{display:none}.carousel-track{grid-auto-columns:calc((100% - 1rem)/2)}}
 @media(max-width:760px){
 .wrap{width:calc(100% - 36px)}
